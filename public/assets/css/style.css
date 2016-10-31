@@ -1,0 +1,586 @@
+@import url(normalize.css);
+@import url(font-awesome.css);
+/** Colors **/
+/** Dimensions **/
+/* line 20, D:/JobsHTML/css/style.scss */
+header, header .all-left .center-nav {
+  margin: 0 auto;
+  text-align: center; }
+
+/* line 25, D:/JobsHTML/css/style.scss */
+.slider-content .services-jobs .ad,
+.slider-content .services-jobs .cat,
+.slider-content .profession-jobs .ad,
+.slider-content .profession-jobs .cat {
+  margin-top: 30px; }
+
+/** Fonts **/
+/* line 36, D:/JobsHTML/css/style.scss */
+html {
+  height: 100%;
+  min-height: 100%; }
+
+/* line 41, D:/JobsHTML/css/style.scss */
+body {
+  font-family: 'Amiri', serif;
+  direction: rtl;
+  min-height: 100%; }
+
+/** GLOBAL **/
+/* line 50, D:/JobsHTML/css/style.scss */
+* {
+  box-sizing: border-box;
+  padding: 0; }
+
+/* line 55, D:/JobsHTML/css/style.scss */
+a {
+  padding: 0; }
+  /* line 58, D:/JobsHTML/css/style.scss */
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: none; }
+
+/* line 66, D:/JobsHTML/css/style.scss */
+li,
+li a,
+button {
+  transition: all 0.4s ease-in-out; }
+
+/* line 70, D:/JobsHTML/css/style.scss */
+i {
+  transition: all 0s; }
+
+/* line 74, D:/JobsHTML/css/style.scss */
+.clearfix {
+  clear: both; }
+
+/* line 78, D:/JobsHTML/css/style.scss */
+select {
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px -2;
+  color: #8e8e8e; }
+
+/* line 85, D:/JobsHTML/css/style.scss */
+select option {
+  color: #bc1139; }
+
+/* line 89, D:/JobsHTML/css/style.scss */
+select option:disabled {
+  color: #8e8e8e; }
+
+/* line 94, D:/JobsHTML/css/style.scss */
+a {
+  color: inherit;
+  text-decoration: none; }
+
+/* line 99, D:/JobsHTML/css/style.scss */
+img {
+  max-width: 100%; }
+
+/* line 103, D:/JobsHTML/css/style.scss */
+li {
+  list-style-type: none; }
+
+/** Header Styles **/
+/* line 110, D:/JobsHTML/css/style.scss */
+.top-bar {
+  min-width: 100%;
+  min-height: 4px;
+  background: #780d31; }
+
+/* line 118, D:/JobsHTML/css/style.scss */
+header .logo {
+  float: right;
+  margin: 0 30px 0 auto;
+  padding: 0;
+  max-height: 100px; }
+
+/* line 124, D:/JobsHTML/css/style.scss */
+header .all-left {
+  background: #e8e8e8;
+  display: block;
+  overflow: hidden; }
+  /* line 128, D:/JobsHTML/css/style.scss */
+  header .all-left .show-menu {
+    display: none;
+    padding: 8px 0;
+    color: #780d31; }
+  /* line 133, D:/JobsHTML/css/style.scss */
+  header .all-left .center-nav {
+    float: right;
+    padding: 20px 0;
+    margin-right: 1%; }
+    /* line 138, D:/JobsHTML/css/style.scss */
+    header .all-left .center-nav li {
+      display: inline-block;
+      list-style-type: none;
+      margin-left: 20px; }
+      /* line 142, D:/JobsHTML/css/style.scss */
+      header .all-left .center-nav li a {
+        padding: 10px;
+        color: #780d31;
+        font-size: 15px; }
+        /* line 146, D:/JobsHTML/css/style.scss */
+        header .all-left .center-nav li a:hover {
+          color: #bc1139; }
+  /* line 152, D:/JobsHTML/css/style.scss */
+  header .all-left .left-nav {
+    padding: 9.5px 0; }
+    /* line 154, D:/JobsHTML/css/style.scss */
+    header .all-left .left-nav li {
+      display: inline-block;
+      border: 1px solid #780d31;
+      padding: 11px 0;
+      margin: 0 4px; }
+      /* line 159, D:/JobsHTML/css/style.scss */
+      header .all-left .left-nav li a {
+        padding: 11px 19px;
+        font-size: 15px;
+        color: #780d31; }
+      /* line 164, D:/JobsHTML/css/style.scss */
+      header .all-left .left-nav li i {
+        margin-left: 5px; }
+    /* line 168, D:/JobsHTML/css/style.scss */
+    header .all-left .left-nav li.account a {
+      color: #fff; }
+      /* line 170, D:/JobsHTML/css/style.scss */
+      header .all-left .left-nav li.account a:hover {
+        background: #fff;
+        color: #780d31; }
+    /* line 176, D:/JobsHTML/css/style.scss */
+    header .all-left .left-nav li a:hover,
+    header .all-left .left-nav li.account {
+      background: #780d31;
+      color: #fff; }
+    /* line 180, D:/JobsHTML/css/style.scss */
+    header .all-left .left-nav select {
+      cursor: pointer;
+      border: none;
+      padding: 0px 10px;
+      font-size: 15px; }
+    /* line 186, D:/JobsHTML/css/style.scss */
+    header .all-left .left-nav li:last-child {
+      padding: 0; }
+
+/* line 191, D:/JobsHTML/css/style.scss */
+header .search-header {
+  background: #ddd;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0; }
+  /* line 197, D:/JobsHTML/css/style.scss */
+  header .search-header form {
+    float: left;
+    margin-left: 9.8%; }
+    /* line 200, D:/JobsHTML/css/style.scss */
+    header .search-header form select {
+      border: 1px solid #8e8e8e;
+      padding: 5px;
+      min-width: 175px;
+      margin: 0 15px;
+      vertical-align: top; }
+    /* line 207, D:/JobsHTML/css/style.scss */
+    header .search-header form button {
+      font-family: 'Amiri', serif;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      background: #780d31;
+      color: #fff;
+      padding: 4px 19px;
+      text-align: center;
+      vertical-align: top; }
+      /* line 217, D:/JobsHTML/css/style.scss */
+      header .search-header form button i {
+        margin-right: 5px; }
+      /* line 220, D:/JobsHTML/css/style.scss */
+      header .search-header form button:hover {
+        background: #fff;
+        color: #780d31; }
+
+/** Slider **/
+/* line 232, D:/JobsHTML/css/style.scss */
+section#slider {
+  position: relative;
+  background-image: url(../images/main-slider.jpg);
+  background-color: #430022;
+  background-size: contain;
+  overflow: hidden;
+  min-width: 100%;
+  height: auto;
+  padding-bottom: 50px;
+  background-repeat: no-repeat; }
+
+/* line 244, D:/JobsHTML/css/style.scss */
+section#slider.class1 {
+  background-image: url(../images/main-slider2.jpg); }
+
+/* line 248, D:/JobsHTML/css/style.scss */
+section#slider.class2 {
+  background-image: url(../images/main-slider.jpg); }
+
+/* line 252, D:/JobsHTML/css/style.scss */
+section#slider.class3 {
+  background-image: url(../images/main-slider2.jpg); }
+
+/**
+.swiper-container {
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.swiper-slide {
+  
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+**/
+/* line 279, D:/JobsHTML/css/style.scss */
+.slider-content {
+  margin: 0 auto;
+  text-align: center;
+  z-index: 2;
+  font-weight: 400; }
+  /* line 284, D:/JobsHTML/css/style.scss */
+  .slider-content h1, .slider-content h4 {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2); }
+  /* line 288, D:/JobsHTML/css/style.scss */
+  .slider-content h1 {
+    font-size: 4vmin;
+    line-height: 60px;
+    padding: 19px; }
+  /* line 294, D:/JobsHTML/css/style.scss */
+  .slider-content h4 {
+    font-size: 2.2vmin;
+    line-height: 40px;
+    margin-top: -25px; }
+  /* line 300, D:/JobsHTML/css/style.scss */
+  .slider-content span {
+    color: #bc1139;
+    text-decoration: underline; }
+  /* line 305, D:/JobsHTML/css/style.scss */
+  .slider-content .services-jobs,
+  .slider-content .profession-jobs {
+    display: block; }
+  /* line 311, D:/JobsHTML/css/style.scss */
+  .slider-content .services-jobs .ad,
+  .slider-content .services-jobs .cat,
+  .slider-content .profession-jobs .ad,
+  .slider-content .profession-jobs .cat {
+    vertical-align: middle; }
+  /* line 318, D:/JobsHTML/css/style.scss */
+  .slider-content .ad {
+    border-radius: 50%; }
+  /* line 322, D:/JobsHTML/css/style.scss */
+  .slider-content .services-jobs .cat {
+    background: #bc1139; }
+    /* line 324, D:/JobsHTML/css/style.scss */
+    .slider-content .services-jobs .cat:hover {
+      opacity: .7; }
+  /* line 334, D:/JobsHTML/css/style.scss */
+  .slider-content .profession-jobs .cat {
+    background: #11bcae; }
+    /* line 336, D:/JobsHTML/css/style.scss */
+    .slider-content .profession-jobs .cat:hover {
+      opacity: .7; }
+
+/* line 346, D:/JobsHTML/css/style.scss */
+.ad img {
+  border-radius: 50%; }
+
+/* line 347, D:/JobsHTML/css/style.scss */
+.slider-content .services-jobs .ad,
+.slider-content .services-jobs .cat,
+.slider-content .profession-jobs .ad,
+.slider-content .profession-jobs .cat {
+  border-radius: 49%;
+  padding: 70px 0px; }
+
+/* line 352, D:/JobsHTML/css/style.scss */
+.slider-content .services-jobs .cat img, .slider-content .profession-jobs .cat img {
+  padding: 10px 0;
+  margin: 0px auto;
+  text-align: center;
+  vertical-align: middle; }
+
+/* line 359, D:/JobsHTML/css/style.scss */
+.slider-content .services-jobs h2, .slider-content .profession-jobs h2 {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  margin-bottom: 0px;
+  padding: 8px 0; }
+  /* line 364, D:/JobsHTML/css/style.scss */
+  .slider-content .services-jobs h2:hover, .slider-content .profession-jobs h2:hover {
+    background: #fff;
+    color: #780d31; }
+
+/* line 370, D:/JobsHTML/css/style.scss */
+section#no-responsible {
+  margin: 0 auto;
+  text-align: center; }
+  /* line 373, D:/JobsHTML/css/style.scss */
+  section#no-responsible h1 {
+    color: #780d31;
+    font-size: 3vmin; }
+  /* line 377, D:/JobsHTML/css/style.scss */
+  section#no-responsible h3 {
+    color: #8e8e8e;
+    font-size: 1.8vmin;
+    line-height: 35px; }
+
+/* line 384, D:/JobsHTML/css/style.scss */
+section#social-media {
+  background: #780d31;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center; }
+  /* line 389, D:/JobsHTML/css/style.scss */
+  section#social-media h1 {
+    font-size: 3vmin; }
+  /* line 393, D:/JobsHTML/css/style.scss */
+  section#social-media ul.social-icons li {
+    display: inline-block; }
+    /* line 395, D:/JobsHTML/css/style.scss */
+    section#social-media ul.social-icons li i {
+      font-size: 36px;
+      margin: 0 20px; }
+      /* line 398, D:/JobsHTML/css/style.scss */
+      section#social-media ul.social-icons li i:hover {
+        color: #bc1139; }
+
+/* line 406, D:/JobsHTML/css/style.scss */
+footer {
+  text-align: center;
+  background: #300612;
+  color: #fff; }
+
+/* line 411, D:/JobsHTML/css/style.scss */
+.main-container {
+  margin-bottom: 10px; }
+
+/** HOME PAGE END **/
+/** Categories Page **/
+/* line 416, D:/JobsHTML/css/style.scss */
+aside {
+  vertical-align: top; }
+  /* line 418, D:/JobsHTML/css/style.scss */
+  aside .row {
+    margin-top: 10px; }
+  /* line 421, D:/JobsHTML/css/style.scss */
+  aside .banner-ad {
+    margin: 0 auto;
+    text-align: center; }
+    /* line 425, D:/JobsHTML/css/style.scss */
+    aside .banner-ad img {
+      max-height: 145px;
+      max-width: 100%; }
+  /* line 430, D:/JobsHTML/css/style.scss */
+  aside .categories {
+    border: 1px solid #e1e1e1; }
+  /* line 433, D:/JobsHTML/css/style.scss */
+  aside .jobs {
+    border: 1px solid #e1e1e1; }
+  /* line 436, D:/JobsHTML/css/style.scss */
+  aside .title {
+    border: 1px solid #780d31;
+    font-size: 15px;
+    background: #780d31;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0; }
+  /* line 444, D:/JobsHTML/css/style.scss */
+  aside ul.cats {
+    padding: 0 5px; }
+    /* line 446, D:/JobsHTML/css/style.scss */
+    aside ul.cats li {
+      background: #e1e1e1;
+      margin: 5px auto;
+      padding: 0 10px; }
+      /* line 450, D:/JobsHTML/css/style.scss */
+      aside ul.cats li:hover {
+        background: rgba(0, 0, 0, 0.2); }
+      /* line 451, D:/JobsHTML/css/style.scss */
+      aside ul.cats li a {
+        padding: 5px 0;
+        display: block;
+        font-size: 13px; }
+        /* line 455, D:/JobsHTML/css/style.scss */
+        aside ul.cats li a:hover {
+          color: #bc1139; }
+
+/* line 461, D:/JobsHTML/css/style.scss */
+.content {
+  margin: 10px auto;
+  vertical-align: top; }
+  /* line 464, D:/JobsHTML/css/style.scss */
+  .content .latest-order-bar {
+    background: #e1e1e1;
+    padding: 0 15px 0 0; }
+    /* line 467, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar h1 {
+      text-align: center;
+      font-size: 21px;
+      color: #780d31; }
+    /* line 468, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar h3 {
+      display: inline-block;
+      line-height: 10px;
+      color: #780d31; }
+    /* line 473, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar select {
+      margin: 0px auto;
+      padding: 7.5px 14px;
+      border: none;
+      background: #780d31;
+      color: #fff;
+      display: inline-block; }
+      /* line 480, D:/JobsHTML/css/style.scss */
+      .content .latest-order-bar select option {
+        color: #fff; }
+  /* line 483, D:/JobsHTML/css/style.scss */
+  .content ul.jobs {
+    padding: 0;
+    margin: 0 auto; }
+    /* line 486, D:/JobsHTML/css/style.scss */
+    .content ul.jobs li {
+      border: 1px solid #e1e1e1;
+      overflow: hidden;
+      padding: 0;
+      margin: 5px auto; }
+      /* line 490, D:/JobsHTML/css/style.scss */
+      .content ul.jobs li .col-lg-2 {
+        position: relative;
+        padding: 0;
+        margin: 0 auto;
+        text-align: center; }
+        /* line 495, D:/JobsHTML/css/style.scss */
+        .content ul.jobs li .col-lg-2 img {
+          max-width: 100%;
+          max-height: 114px;
+          position: relative;
+          margin: 0 auto;
+          text-align: center; }
+        /* line 502, D:/JobsHTML/css/style.scss */
+        .content ul.jobs li .col-lg-2 .paid-strip {
+          position: absolute;
+          top: 0;
+          margin: 0 auto;
+          text-align: center;
+          background: #780d31;
+          color: #fff;
+          font-size: 13px;
+          width: 100%; }
+      /* line 516, D:/JobsHTML/css/style.scss */
+      .content ul.jobs li .col-lg-8 h2 {
+        color: #780d31;
+        font-size: 15px;
+        line-height: 12px; }
+      /* line 519, D:/JobsHTML/css/style.scss */
+      .content ul.jobs li .col-lg-8 p {
+        font-family: tahoma;
+        color: #8e8e8e;
+        line-height: 26px;
+        font-size: 13px; }
+      /* line 530, D:/JobsHTML/css/style.scss */
+      .content ul.jobs li .col-lg-2.last ul.details {
+        margin: 10px auto; }
+        /* line 531, D:/JobsHTML/css/style.scss */
+        .content ul.jobs li .col-lg-2.last ul.details li {
+          font-family: tahoma;
+          font-size: 13px;
+          border: none;
+          margin: 2px auto;
+          background: #e1e1e1;
+          padding: 5px; }
+  /* line 543, D:/JobsHTML/css/style.scss */
+  .content .contain-pager {
+    margin: 0 auto;
+    text-align: center; }
+  /* line 550, D:/JobsHTML/css/style.scss */
+  .content .latest-order-bar.comments {
+    background: transparent;
+    margin-bottom: 10px; }
+    /* line 553, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar.comments h3 {
+      background: #e1e1e1;
+      display: block;
+      padding: 15px 10px;
+      margin: 0 auto; }
+    /* line 554, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar.comments h2 {
+      color: #780d31;
+      font-size: 17px; }
+    /* line 555, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar.comments textarea {
+      width: 100%;
+      height: 160px;
+      padding: 10px; }
+    /* line 556, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar.comments button {
+      margin: 0 auto;
+      text-align: center;
+      min-width: 100%;
+      background: #780d31;
+      color: #fff;
+      outline: none;
+      border: none;
+      padding: 10px; }
+      /* line 556, D:/JobsHTML/css/style.scss */
+      .content .latest-order-bar.comments button:hover {
+        background: #bc1139; }
+    /* line 558, D:/JobsHTML/css/style.scss */
+    .content .latest-order-bar.comments .acomment h2 {
+      line-height: 1px; }
+  /* line 562, D:/JobsHTML/css/style.scss */
+  .content ul.jobs h3 {
+    color: #780d31; }
+  /* line 565, D:/JobsHTML/css/style.scss */
+  .content .jobs-details-list li {
+    color: #780d31; }
+  /* line 567, D:/JobsHTML/css/style.scss */
+  .content .job-details h3 {
+    line-height: 1px;
+    padding: 10px; }
+  /* line 567, D:/JobsHTML/css/style.scss */
+  .content .job-details p {
+    padding: 0 10px; }
+  /* line 570, D:/JobsHTML/css/style.scss */
+  .content form#register input, .content form#register select, .content form#register textarea {
+    min-width: 100%;
+    display: block;
+    margin: 10px auto;
+    padding: 10px; }
+  /* line 571, D:/JobsHTML/css/style.scss */
+  .content form#register textarea {
+    min-height: 160px; }
+  /* line 574, D:/JobsHTML/css/style.scss */
+  .content button#reg {
+    margin-bottom: 10px;
+    text-align: center;
+    min-width: 100%;
+    background: #780d31;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 10px; }
+    /* line 574, D:/JobsHTML/css/style.scss */
+    .content button#reg:hover {
+      background: #bc1139; }
+
+/*# sourceMappingURL=style.css.map */
