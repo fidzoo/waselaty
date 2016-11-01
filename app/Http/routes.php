@@ -74,6 +74,9 @@ Route::get('company-list', 'AdminController@usersList');
 Route::get('person-list', 'AdminController@usersList');
 Route::delete('user-delete/{id}', 'AdminController@userDestroy');
 
+Route::get('site-content', 'SiteContentController@index');
+Route::post('site-content', 'SiteContentController@update');
+
 //ajax search menu 
 Route::get('/ajax-subcat', function(){
 	$cat_id= Request::input('cat_id');

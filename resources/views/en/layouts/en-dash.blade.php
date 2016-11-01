@@ -158,6 +158,9 @@
                               <a href="{{ URL::to('jobs-banners') }}"><i class="fa fa-cube" aria-hidden="true"></i> Update Jobs Banners</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> Site Content</a>
                     </li> 
             @endif                   
                 </ul>

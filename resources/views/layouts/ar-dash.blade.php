@@ -159,6 +159,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> محتويات الموقع</a>
+                    </li>
             @endif                    
                 </ul>
 
