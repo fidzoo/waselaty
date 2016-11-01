@@ -12,6 +12,7 @@ use App\Mcategory;
 use App\Category;
 use App\Country;
 use App\Banner;
+use App\SiteContent;
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,7 +87,13 @@ class AuthController extends Controller
         }
             if ($request->is('person-reg')){
                 Session::flash('reg_group', 'person');
-            }else {Session::forget('reg_group');}
+                //Registration Policy part
+                $reg_policy= SiteContent::where('item', 'person_reg')->first();
+            }else {
+                Session::forget('reg_group');
+                //Registration Policy part
+                $reg_policy= SiteContent::where('item', 'company_reg')->first();
+            }
             /*--------------------
             for search bar */
             $mcat_ar= Mcategory::lists('ar_title', 'id');
@@ -103,9 +110,9 @@ class AuthController extends Controller
             $banner_down= Banner::all()->random();
 
         if(Session::get('lang') == 'en'){
-            return view('en.auth.register', compact('mcat_en', 'cat_en', 'country_en', 'banner_up', 'banner_mid', 'banner_down'));
+            return view('en.auth.register', compact('mcat_en', 'cat_en', 'country_en', 'banner_up', 'banner_mid', 'banner_down', 'reg_policy'));
         }
-        return view('auth.register', compact('mcat_ar', 'cat_ar', 'country_ar', 'banner_up', 'banner_mid', 'banner_down'));
+        return view('auth.register', compact('mcat_ar', 'cat_ar', 'country_ar', 'banner_up', 'banner_mid', 'banner_down', 'reg_policy'));
     }
 
     /**

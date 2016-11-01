@@ -8,6 +8,7 @@ use App\Category;
 use App\Country;
 use App\Banner;
 use App\Job;
+use App\SiteContent;
 use Session;
 use App\Http\Requests;
 
@@ -35,10 +36,13 @@ class IndexController extends Controller
         $banner_mid= Banner::where('ar_position', 'الرئيسية - الوسط')->first();
         $banner_down= Banner::where('ar_position', 'الرئيسية - الأسفل')->first();
 
+        //Site Policy part
+        $policy= SiteContent::where('item', 'policy')->first();
+
         if(Session::get('lang') == 'en'){
-        	return view('en.index', compact('mcat_en', 'cat_en', 'country_en', 'jobs_count', 'banner_up', 'banner_mid', 'banner_down'));
+        	return view('en.index', compact('mcat_en', 'cat_en', 'country_en', 'jobs_count', 'banner_up', 'banner_mid', 'banner_down', 'policy'));
         }
-	    return view('index', compact('mcat_ar', 'cat_ar', 'country_ar', 'jobs_count', 'banner_up', 'banner_mid', 'banner_down'));
+	    return view('index', compact('mcat_ar', 'cat_ar', 'country_ar', 'jobs_count', 'banner_up', 'banner_mid', 'banner_down', 'policy'));
 
 	}
 }	
