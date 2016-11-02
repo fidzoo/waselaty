@@ -36,13 +36,18 @@ class IndexController extends Controller
         $banner_mid= Banner::where('ar_position', 'الرئيسية - الوسط')->first();
         $banner_down= Banner::where('ar_position', 'الرئيسية - الأسفل')->first();
 
+        //slider images
+        $silder_img1= SiteContent::where('item', 'slider_img1')->first();
+        $silder_img2= SiteContent::where('item', 'slider_img2')->first();
+        $silder_img3= SiteContent::where('item', 'slider_img3')->first();
+
         //Site Policy part
         $policy= SiteContent::where('item', 'policy')->first();
 
         if(Session::get('lang') == 'en'){
-        	return view('en.index', compact('mcat_en', 'cat_en', 'country_en', 'jobs_count', 'banner_up', 'banner_mid', 'banner_down', 'policy'));
+        	return view('en.index', compact('mcat_en', 'cat_en', 'country_en', 'jobs_count', 'silder_img1', 'silder_img2', 'silder_img3', 'banner_up', 'banner_mid', 'banner_down', 'policy'));
         }
-	    return view('index', compact('mcat_ar', 'cat_ar', 'country_ar', 'jobs_count', 'banner_up', 'banner_mid', 'banner_down', 'policy'));
+	    return view('index', compact('mcat_ar', 'cat_ar', 'country_ar', 'jobs_count', 'banner_up', 'silder_img1', 'silder_img2', 'silder_img3', 'banner_mid', 'banner_down', 'policy'));
 
 	}
 }	

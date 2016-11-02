@@ -81,12 +81,12 @@
 
 <style type="text/css">
         section#slider.class1 {
-  background-image: url(assets/images/main-slider.jpg); }
+  background-image: url({!! $silder_img1->ar_content !!}); }
 
 section#slider.class2 {
-  background-image: url(assets/images/main-slider-2.jpg); }
+  background-image: url({!! $silder_img2->ar_content !!}); }
 
 section#slider.class3 {
-  background-image: url(assets/images/main-slider-3.jpg); }
+  background-image: url({!! $silder_img3->ar_content !!}); }
 </style>
 @stop

@@ -160,7 +160,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> محتويات الموقع</a>
+                        <a href="#"><i class="fa fa-cube" aria-hidden="true"></i> محتويات الموقع<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                             <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> تحديث السياسات </a>  
+                            </li>
+                            <li>
+                              <a href="{{ URL::to('back-n-social') }}"><i class="fa fa-cube" aria-hidden="true"></i> السلايدر مواقع التواصل</a>
+                            </li>
+                        </ul>
                     </li>
             @endif                    
                 </ul>

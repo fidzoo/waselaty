@@ -160,8 +160,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> Site Content</a>
-                    </li> 
+                        <a href="#"><i class="fa fa-cube" aria-hidden="true"></i> Website Content<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                             <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> Update Polices </a>  
+                            </li>
+                            <li>
+                              <a href="{{ URL::to('back-n-social') }}"><i class="fa fa-cube" aria-hidden="true"></i> Slider & Social Media</a>
+                            </li>
+                        </ul>
+                    </li>
             @endif                   
                 </ul>
 

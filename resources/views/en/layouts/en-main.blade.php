@@ -129,16 +129,16 @@
                     <h1>Join us on our social media pages</h1>
                     <div class="clearfix"></div>
                     <ul class="social-icons">
-                        <a href="#" target="_blank">
+                        <a href='{!!social("facebook")!!}' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-facebook"></i></li>
                         </a>
-                        <a href="#" target="_blank">
+                        <a href='{!!social("twitter")!!}' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-twitter"></i></li>
                         </a>
-                        <a href="#" target="_blank">
+                        <a href='{!!social("youtube")!!}' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-youtube"></i></li>
                         </a>
-                        <a href="#" target="_blank">
+                        <a href='{!!social("instagram")!!}' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-instagram"></i></li>
                         </a>
                     </ul>
