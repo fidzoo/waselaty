@@ -15,7 +15,7 @@
 
 {!! Form::open(["url"=>"prices/$price->id", "class"=>"form-group", "method"=>"patch"]) !!}
 {!! Form::label('Price Order') !!}<br>
-{!! Form::text('id', $price->id, ['class'=>'form-control']) !!}<br>
+{!! Form::text('display_order', $price->display_order, ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('Arabic Price Plan Title') !!}<br>
 {!! Form::text('ar_item', $price->ar_item, ['class'=>'form-control']) !!}<br>
@@ -24,18 +24,18 @@
 {!! Form::text('en_title', $price->en_title, ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('Ad. Duration for this price') !!}<br>
-Number: {!! Form::number('number', $number)!!} {!!Form::select('duration', ['day'=>'Days', 'week'=>'Weeks', 'month'=>'Months', 'year'=>'Years'], $duration)!!}<br><br>
+Number: {!! Form::number('number', $number, ['min'=>0])!!} {!!Form::select('duration', ['day'=>'Days', 'week'=>'Weeks', 'month'=>'Months', 'year'=>'Years'], $duration)!!}<br><br>
 
 <h3>Normal Ads.:</h3><br>
 
 {!! Form::label('Cash Price') !!}<br>
-{!! Form::number('normal_price', $price->normal_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('normal_price', $price->normal_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('Currency') !!}<br>
 {!! Form::text('norm_currency', $price->norm_currency,['class'=>'form-control']) !!}<br><br>
 
 {!! Form::label('Paypal Price') !!}<br>
-{!! Form::number('paypal_norm_price', $price->paypal_norm_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('paypal_norm_price', $price->paypal_norm_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('Currency') !!}<br>
 {!! Form::select('paypal_norm_currency', ['USD'=>'US Dollars', 'EUR'=>'Euro'], $price->paypal_norm_currency, ['class'=>'form-control']) !!}<br><br>
@@ -43,13 +43,13 @@ Number: {!! Form::number('number', $number)!!} {!!Form::select('duration', ['day
 <h3>Premium Ads.:</h3><br>
 
 {!! Form::label('Cash Price') !!}<br>
-{!! Form::number('premium_price', $price->premium_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('premium_price', $price->premium_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('Currency') !!}<br>
 {!! Form::text('prem_currency', $price->prem_currency,['class'=>'form-control']) !!}<br><br>
 
 {!! Form::label('Paypal Price') !!}<br>
-{!! Form::number('paypal_prem_price', $price->paypal_prem_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('paypal_prem_price', $price->paypal_prem_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('Currency') !!}<br>
 {!! Form::select('paypal_prem_currency', ['USD'=>'US Dollars', 'EUR'=>'Euro'], $price->paypal_prem_currency, ['class'=>'form-control']) !!}<br><br>

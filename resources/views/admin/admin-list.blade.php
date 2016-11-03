@@ -11,14 +11,18 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>مسلسل</th>
                         <th>الاسم</th>
                         <th>البريد الإلكتروني</th>
                         <th>نوع الأدمن</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php $order= 1; ?>
                 @foreach($users as $user)
                     <tr>
+                        <td>{!! $order !!}</td>
+                        <?php $order= $order +1;?>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{@$user->roles[0]->ar_role}}</td>

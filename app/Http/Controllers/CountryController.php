@@ -105,7 +105,16 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $country= Country::find($id);
+        $country->ar_name= $request->input('ar_name');
+        $country->en_name= $request->input('en_name');
+        $country->save();
+
+        if(Session::get('lang') == 'en'){
+            return Redirect::back()->with('message', 'Country updated successfully!');
+        }
+        return Redirect::back()->with('message', 'تم تحديث البلد بنجاح!');
+
     }
 
     /**

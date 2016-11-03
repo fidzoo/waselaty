@@ -21,18 +21,18 @@
 {!! Form::text('en_title', "", ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('الفئة السعرية (مدة الإعلان)') !!}<br>
-العدد: {!! Form::number('number')!!} {!!Form::select('duration', ['day'=>'أيام', 'week'=>'أسابيع', 'month'=>'أشهر', 'year'=>'سنوات',])!!}<br><br>
+العدد: {!! Form::number('number', '', ['min'=>0])!!} {!!Form::select('duration', ['day'=>'أيام', 'week'=>'أسابيع', 'month'=>'أشهر', 'year'=>'سنوات',])!!}<br><br>
 
 <h3>الإعلانات العادية:</h3><br>
 
 {!! Form::label('سعر الإعلان الكاش') !!}<br>
-{!! Form::number('normal_price', "", ['class'=>'form-control']) !!}<br>
+{!! Form::number('normal_price', "", ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::text('norm_currency', "",['class'=>'form-control']) !!}<br><br>
 
 {!! Form::label('سعر الإعلان البايبال') !!}<br>
-{!! Form::number('paypal_norm_price', "", ['class'=>'form-control']) !!}<br>
+{!! Form::number('paypal_norm_price', "", ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::select('paypal_norm_currency', ['USD'=>'دولار أمريكي', 'EUR'=>'يورو'], ['class'=>'form-control']) !!}<br><br>
@@ -40,13 +40,13 @@
 <h3>الإعلانات المميزة:</h3><br>
 
 {!! Form::label('سعر الإعلان الكاش') !!}<br>
-{!! Form::number('premium_price', "", ['class'=>'form-control']) !!}<br>
+{!! Form::number('premium_price', "", ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::text('prem_currency', "",['class'=>'form-control']) !!}<br><br>
 
 {!! Form::label('سعر الإعلان البايبال') !!}<br>
-{!! Form::number('paypal_prem_price', "", ['class'=>'form-control']) !!}<br>
+{!! Form::number('paypal_prem_price', "", ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::select('paypal_prem_currency', ['USD'=>'دولار أمريكي', 'EUR'=>'يورو'], ['class'=>'form-control']) !!}<br><br>

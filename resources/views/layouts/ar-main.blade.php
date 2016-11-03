@@ -132,16 +132,16 @@
                     <h1>تواصل معنا على مواقع التواصل الإجتماعي</h1>
                     <div class="clearfix"></div>
                     <ul class="social-icons">
-                        <a href='{!!URL::to(social("facebook"))!!}' target="_blank">
+                        <a href='{!! URL::to(social("facebook"))!!}' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-facebook"></i></li>
                         </a>
-                        <a href='{!!social("twitter")!!}' target="_blank">
+                        <a href='#' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-twitter"></i></li>
                         </a>
-                        <a href='{!!social("youtube")!!}' target="_blank">
+                        <a href='#' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-youtube"></i></li>
                         </a>
-                        <a href='{!!social("instagram")!!}' target="_blank">
+                        <a href='#' target="_blank">
                             <li class="wow bounceIn" data-wow-duration="1s" data-wow-iteration="100000"><i class="fa fa-instagram"></i></li>
                         </a>
                     </ul>

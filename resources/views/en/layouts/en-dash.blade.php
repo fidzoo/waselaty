@@ -197,8 +197,7 @@
                 </div>
                 <!-- /. ROW  -->
 
-				<footer><p>-----------------------------<br>
-                All rights reserved, Dashboard by: <a href="http://yisweb.com">YISWEB</a></p></footer>
+				<footer></footer>
             </div>
             <!-- /. PAGE INNER  -->
         </div>

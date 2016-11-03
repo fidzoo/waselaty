@@ -11,6 +11,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>E-mail</th>
                         <th>Phone</th>
@@ -22,8 +23,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php $order= 1; ?>
                 @foreach($users as $user)
                     <tr>
+                        <td>{!! $order !!}</td>
+                        <?php $order= $order +1;?>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td style=" direction: ltr;text-align: left;"> 

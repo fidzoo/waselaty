@@ -13,15 +13,22 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>رقم البلد</th>
+                        <th>مسلسل</th>
                         <th>اسم البلد</th>
+                        <th>Country Name</th>
                     </tr>
                 </thead>
                 <tbody>
+                 <?php $order= 1; ?>
                 @foreach($countries as $country)
                     <tr>
-                        <td>{{$country->id}}</td>
-                        <td>{{$country->ar_name}}</td>
+                    {!! Form::open(["url"=>"countries/$country->id", "method"=>"patch"]) !!}
+                        <td>{!! $order !!}</td>
+                        <?php $order= $order +1;?>
+                        <td>{!!Form::text('ar_name', $country->ar_name)!!}</td>
+                        <td>{!!Form::text('en_name', $country->en_name)!!}</td>
+                        <td>{!! Form::submit('تحديث', ['class'=>'btn btn-info']) !!}</td>
+                        {!! Form::close() !!}
 						<td>{!! Form::open(["url"=>"countries/$country->id", "method"=>"delete"]) !!} 
 							{!! Form::submit('حذف', ['class'=>'btn btn-danger']) !!}
 							{!! Form::close() !!}</td>

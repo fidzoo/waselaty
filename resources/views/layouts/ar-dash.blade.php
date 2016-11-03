@@ -197,8 +197,7 @@
                 </div>
                 <!-- /. ROW  -->
 
-				<footer><p>-----------------------------<br>
-                كل الحقوق محفوظة. لوحة التحكم تطوير: <a href="http://yisweb.com">YISWEB</a></p></footer>
+				<footer></footer>
             </div>
             <!-- /. PAGE INNER  -->
         </div>

@@ -13,14 +13,18 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>English Section Name</th>
                         <th>Arabic Section Name</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php $order= 1; ?>
                 @foreach($mcats as $cat)
                     <tr>
                         {!! Form::open(["url"=>"mcategory/$cat->id", "method"=>"patch"]) !!}
+                        <td>{!! $order !!}</td>
+                        <?php $order= $order +1;?>
                         <td>{!!Form::text('en_title', $cat->en_title)!!}</td>
                         <td>{!!Form::text('ar_title', $cat->ar_title)!!}</td>
                         <td>{!! Form::submit('Update', ['class'=>'btn btn-info']) !!}</td>
