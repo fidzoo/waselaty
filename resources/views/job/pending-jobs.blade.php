@@ -13,6 +13,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>مسلسل</th>
                         <th>الوظيفة</th>
                         <th>Job title</th>
                         <th>صاحب الإعلان</th>
@@ -25,8 +26,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php $order= 1; ?>
                 @foreach($jobs as $job)
                     <tr>
+                        <td>{!! $order !!}</td>
+                        <?php $order= $order +1;?>
                         <td>{{$job->ar_title}}</td>
                         <td>{{$job->en_title}}</td>
                         <td>{{$job->user->name}}</td>

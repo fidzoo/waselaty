@@ -159,6 +159,17 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cube" aria-hidden="true"></i> محتويات الموقع<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                             <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> تحديث السياسات </a>  
+                            </li>
+                            <li>
+                              <a href="{{ URL::to('back-n-social') }}"><i class="fa fa-cube" aria-hidden="true"></i> السلايدر مواقع التواصل</a>
+                            </li>
+                        </ul>
+                    </li>
             @endif                    
                 </ul>
 
@@ -186,8 +197,7 @@
                 </div>
                 <!-- /. ROW  -->
 
-				<footer><p>-----------------------------<br>
-                كل الحقوق محفوظة. لوحة التحكم تطوير: <a href="http://yisweb.com">YISWEB</a></p></footer>
+				<footer></footer>
             </div>
             <!-- /. PAGE INNER  -->
         </div>

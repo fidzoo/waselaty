@@ -71,9 +71,7 @@
         <section id="no-responsible">
             <div class="container">
                 <div class="row wow zoomIn" data-wow-delay=".2s" data-wow-duration="2s">
-                    <h1>الموقع غير متحمل لأى مسؤلية قانونية</h1>
-                    <h3>الموقع لا يتحمل أي مسؤولية قانونية في التعامل مع الأشخاص وتوظيفهم في أي وقت ومن حيث نخلي
-مسؤوليتنا عن تعرض أي شخص لأي حالة نصب أو التعامل مع شخص قد يكون له سجل إجرامي أو ما شابه</h3> </div>
+                    {!! $policy->ar_content !!} </div>
             </div>
         </section>
         <div class="clearfix"></div>
@@ -83,12 +81,12 @@
 
 <style type="text/css">
         section#slider.class1 {
-  background-image: url(assets/images/main-slider.jpg); }
+  background-image: url({!! $silder_img1->ar_content !!}); }
 
 section#slider.class2 {
-  background-image: url(assets/images/main-slider-2.jpg); }
+  background-image: url({!! $silder_img2->ar_content !!}); }
 
 section#slider.class3 {
-  background-image: url(assets/images/main-slider-3.jpg); }
+  background-image: url({!! $silder_img3->ar_content !!}); }
 </style>
 @stop

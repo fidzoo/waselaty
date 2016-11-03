@@ -32,9 +32,11 @@ class CategoryController extends Controller
             $categories= Category::all();
 
             if(Session::get('lang') == 'en'){
-                return view('en.category.category-delete', compact('categories'));
+                $mcategories= Mcategory::lists('en_title', 'id');
+                return view('en.category.category-delete', compact('categories', 'mcategories'));
             }
-            return view('category.category-delete', compact('categories'));
+            $mcategories= Mcategory::lists('ar_title', 'id');
+            return view('category.category-delete', compact('categories', 'mcategories'));
         }
             else return Redirect('/');
     
@@ -189,7 +191,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(Session::get('group') == 'admin'){
+
+        $category= Category::find($id);
+
+        $category->ar_title= $request->input('ar_title');
+        $category->en_title= $request->input('en_title');
+        $category->mcategory_id= $request->input('mcategory');
+        $category->save();
+
+        if(Session::get('lang') == 'en'){
+                return Redirect::back()->with('message', 'Job Category Updated successfully!');
+            }
+        return Redirect::back()->with('message', 'تم تحديث تصنيف الوظيفة بنجاح!');
+        }
+        else return Redirect('/');
     }
 
     /**

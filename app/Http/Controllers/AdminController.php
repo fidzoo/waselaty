@@ -48,6 +48,7 @@ class AdminController extends Controller
     	$user->email= $request->input('email');
     	$user->password= bcrypt($request->input('email'));
     	$user->user_group= 'admin';
+        $user->api_token= str_random(60);
     	$user->save();
 
     	$user->roles()->sync($request->get('role'));

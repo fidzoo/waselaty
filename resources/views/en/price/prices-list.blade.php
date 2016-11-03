@@ -22,7 +22,7 @@
                 <tbody>
                 @foreach($prices as $price)
                     <tr>
-                        <td>{{$price->id}}</td>
+                        <td>{{$price->display_order}}</td>
                         <td>{{$price->en_item}}</td>
                         <td>{{$price->normal_price}}&nbsp;{{$price->norm_currency}}</td>
                         <td>{{$price->paypal_norm_price}}&nbsp;{{$price->paypal_norm_currency}}</td>
@@ -59,7 +59,7 @@
                 <tbody>
                 @foreach($prices as $price)
                     <tr>
-                        <td>{{$price->id}}</td>
+                        <td>{{$price->display_order}}</td>
                         <td>{{$price->en_item}}</td>
                         <td>{{$price->premium_price}}&nbsp;{{$price->   prem_currency}}</td>
                         <td>{{$price->paypal_prem_price}}&nbsp;{{$price->paypal_prem_currency}}</td>

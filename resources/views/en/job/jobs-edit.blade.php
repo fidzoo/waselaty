@@ -66,7 +66,10 @@
                                         <td class="col-md-2 col-xs-12"> @if($job->approved == 1)Approved @elseif($job->approved == 2) Rejected @else Pendeing @endif
                                         </td>
                                         <td class="col-md-2 col-xs-12">{!!$job->price->en_title!!}</td>
-                                        <td class="col-md-2 col-xs-12">@if($job->expire_date > $current_time) Still Valid @else Expired @endif
+                                        <td class="col-md-2 col-xs-12">@if($job->expire_date > $current_time) Still Valid 
+                                        @elseif($job->expire_date == '0000-00-00 00:00:00') Pending
+                                        @else Expired 
+                                        @endif
                                         </td>
                                         <td class="col-md-1 col-xs-12">{!! Form::open(["url"=>"jobs/$job->id/edit", "method"=>"get"]) !!} {!! Form::submit('Edit', ['class'=>'btn']) !!} {!! Form::close() !!}</td>
                                         <td class="col-md-1 col-xs-12">{!! Form::open(["url"=>"jobs/$job->id", "method"=>"delete"]) !!} {!! Form::submit('Delete', ['class'=>'btn']) !!} {!! Form::close() !!}</td>

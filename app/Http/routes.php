@@ -74,6 +74,14 @@ Route::get('company-list', 'AdminController@usersList');
 Route::get('person-list', 'AdminController@usersList');
 Route::delete('user-delete/{id}', 'AdminController@userDestroy');
 
+Route::get('site-content', 'SiteContentController@siteContent');
+Route::post('site-content', 'SiteContentController@updateContent');
+
+Route::get('back-n-social', 'SiteContentController@backChange');
+Route::post('slider-update', 'SiteContentController@updateBack');
+Route::post('social-update', 'SiteContentController@updateBack');
+
+
 //ajax search menu 
 Route::get('/ajax-subcat', function(){
 	$cat_id= Request::input('cat_id');

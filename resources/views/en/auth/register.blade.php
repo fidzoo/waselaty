@@ -43,9 +43,7 @@
                 <ul class="jobs">
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
                         <div class="job-details">
-                         <h3>Registration Terms</h3>
-                         <p>Registration terms in the website Registration terms in the website Registration terms in the website Registration terms in the website Registration terms in the website Registration terms in the website
-</p>
+                         {!! $reg_policy->en_content !!}
                          <hr>
                          <h3>Kindly fill the following fields to complete the registration</h3>
                          <div class="col-lg-12">

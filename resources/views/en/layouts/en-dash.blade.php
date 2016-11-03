@@ -158,7 +158,18 @@
                               <a href="{{ URL::to('jobs-banners') }}"><i class="fa fa-cube" aria-hidden="true"></i> Update Jobs Banners</a>
                             </li>
                         </ul>
-                    </li> 
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cube" aria-hidden="true"></i> Website Content<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                             <a href="{{ URL::to('site-content') }}"><i class="fa fa-cube" aria-hidden="true"></i> Update Polices </a>  
+                            </li>
+                            <li>
+                              <a href="{{ URL::to('back-n-social') }}"><i class="fa fa-cube" aria-hidden="true"></i> Slider & Social Media</a>
+                            </li>
+                        </ul>
+                    </li>
             @endif                   
                 </ul>
 
@@ -186,8 +197,7 @@
                 </div>
                 <!-- /. ROW  -->
 
-				<footer><p>-----------------------------<br>
-                All rights reserved, Dashboard by: <a href="http://yisweb.com">YISWEB</a></p></footer>
+				<footer></footer>
             </div>
             <!-- /. PAGE INNER  -->
         </div>

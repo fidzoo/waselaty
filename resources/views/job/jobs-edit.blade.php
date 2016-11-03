@@ -71,6 +71,7 @@
                                         </td>
                                         <td class="col-md-2 col-xs-12">{!!$job->price->ar_item!!}</td>
                                         <td class="col-md-2 col-xs-12">@if($job->expire_date > $current_time) المدة سارية
+                                        @elseif($job->expire_date == '0000-00-00 00:00:00') قيد المراجعة
                                         @else منتهي المدة
                                         @endif</td>
                                         <td class="col-md-1 col-xs-12">{!! Form::open(["url"=>"jobs/$job->id/edit", "method"=>"get"]) !!}

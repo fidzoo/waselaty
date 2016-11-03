@@ -15,7 +15,7 @@
 
 {!! Form::open(["url"=>"prices/$price->id", "class"=>"form-group", "method"=>"patch"]) !!}
 {!! Form::label('ترتيب السعر في العرض') !!}<br>
-{!! Form::text('id', $price->id, ['class'=>'form-control']) !!}<br>
+{!! Form::text('display_order', $price->display_order, ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('عنوان التسعير') !!}<br>
 {!! Form::text('ar_item', $price->ar_item, ['class'=>'form-control']) !!}<br>
@@ -24,18 +24,18 @@
 {!! Form::text('en_title', $price->en_title, ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('مدة الإعلان لهذا السعر') !!}<br>
-العدد: {!! Form::number('number', $number)!!} {!!Form::select('duration', ['day'=>'أيام', 'week'=>'أسابيع', 'month'=>'أشهر', 'year'=>'سنوات'], $duration)!!}<br><br>
+العدد: {!! Form::number('number', $number, ['min'=>0])!!} {!!Form::select('duration', ['day'=>'أيام', 'week'=>'أسابيع', 'month'=>'أشهر', 'year'=>'سنوات'], $duration)!!}<br><br>
 
 <h3>الإعلانات العادية:</h3><br>
 
 {!! Form::label('سعر الإعلان الكاش') !!}<br>
-{!! Form::number('normal_price', $price->normal_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('normal_price', $price->normal_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::text('norm_currency', $price->norm_currency,['class'=>'form-control']) !!}<br><br>
 
 {!! Form::label('سعر الإعلان البايبال') !!}<br>
-{!! Form::number('paypal_norm_price', $price->paypal_norm_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('paypal_norm_price', $price->paypal_norm_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::select('paypal_norm_currency', ['USD'=>'دولار أمريكي', 'EUR'=>'يورو'], $price->paypal_norm_currency, ['class'=>'form-control']) !!}<br><br>
@@ -43,13 +43,13 @@
 <h3>الإعلانات المميزة:</h3><br>
 
 {!! Form::label('سعر الإعلان الكاش') !!}<br>
-{!! Form::number('premium_price', $price->premium_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('premium_price', $price->premium_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::text('prem_currency', $price->prem_currency,['class'=>'form-control']) !!}<br><br>
 
 {!! Form::label('سعر الإعلان البايبال') !!}<br>
-{!! Form::number('paypal_prem_price', $price->paypal_prem_price, ['class'=>'form-control']) !!}<br>
+{!! Form::number('paypal_prem_price', $price->paypal_prem_price, ['class'=>'form-control', 'step' => 'any', 'min'=>0]) !!}<br>
 
 {!! Form::label('العملة') !!}<br>
 {!! Form::select('paypal_prem_currency', ['USD'=>'دولار أمريكي', 'EUR'=>'يورو'], $price->paypal_prem_currency, ['class'=>'form-control']) !!}<br><br>

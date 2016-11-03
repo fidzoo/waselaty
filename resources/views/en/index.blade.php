@@ -71,8 +71,7 @@
         <section id="no-responsible">
             <div class="container">
                 <div class="row wow zoomIn" data-wow-delay=".2s" data-wow-duration="2s">
-                    <h1>Website is not responsible for any legal issues</h1>
-                    <h3>The website does not bear any legal responsibility in dealing with persons and hiring them at any time therefore the website is not responsible for any fraud cases happen or dealing with any person with criminal record, etc.</h3> </div>
+                    {!! $policy->en_content !!} </div>
             </div>
         </section>
         <div class="clearfix"></div>

@@ -13,18 +13,25 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Country No.</th>
-                        <th>Country Name</th>
+                        <th>#</th>
+                        <th>English Country Name</th>
+                        <th>Arabic Country Name</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
+                 <?php $order= 1; ?>
                 @foreach($countries as $country)
                     <tr>
-                        <td>{{$country->id}}</td>
-                        <td>{{$country->en_name}}</td>
-						<td>{!! Form::open(["url"=>"countries/$country->id", "method"=>"delete"]) !!} 
-							{!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
-							{!! Form::close() !!}</td>
+                    {!! Form::open(["url"=>"countries/$country->id", "method"=>"patch"]) !!}
+                        <td>{!! $order !!}</td>
+                        <?php $order= $order +1;?>
+                        <td>{!!Form::text('en_name', $country->en_name)!!}</td>
+                        <td>{!!Form::text('ar_name', $country->ar_name)!!}</td>
+                        <td>{!! Form::submit('Update', ['class'=>'btn btn-info']) !!}</td>
+                        {!! Form::close() !!}
+                        <td>{!! Form::open(["url"=>"countries/$country->id", "method"=>"delete"]) !!} 
+                            {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                            {!! Form::close() !!}</td>
                     </tr>
                 @endforeach
                 </tbody>

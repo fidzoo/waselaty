@@ -360,18 +360,19 @@ class JobController extends Controller
             $job->en_currency= $request->input('en_currency');
             $job->experience= $request->input('experience');
             
+            if(Session::get('group') == 'admin'){
             $price= Price::where('id', $request->input('duration'))->first();
             $job_duration= $price->en_item;
             $job->duration= $price->en_item;
             $job->price_id= $price->id;
 
+
             //set job expire date and time
             $current_date = date('Y-m-d h:i:sa');
             $expire_date = strtotime('+'.$job_duration, strtotime($current_date));
-            if(Session::get('group') == 'admin'){
             $job->expire_date = date('Y-m-d H:i:sa', $expire_date);
-                //this admin condition couz date will be set to diffrent value due it is not enabled by user to change so it will put old value.
-                }            
+                //this admin condition couz date will be set to diffrent value due it is not enabled by user to change so it will put old value.                
+          }
           
         //it is delete old pic first the upload new one
         if ($request->file('image')){
