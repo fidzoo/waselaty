@@ -119,7 +119,14 @@ Route::get('/ajax-banners', function(){
 //API Routes 
 Route::group(['prefix'=> 'api'], function(){
 	Route::get('mcat/{id}', 'apiShowController@mainCatShow');
+	Route::get('category/{id}', 'apiShowController@categoryShow');
+	Route::get('job/{id}', 'apiShowController@jobShow');
+	Route::get('api-search', 'apiShowController@search');
+	Route::get('login', 'Auth\AuthController@showLoginForm');
+});
 
+Route::group(['prefix'=> 'api', 'middleware'=> 'auth:api'], function(){
+	
 });
 
 

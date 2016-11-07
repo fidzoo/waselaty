@@ -12,6 +12,7 @@
 @endif
 
 <h3>Slider Images Update:</h3><br>
+<b>(Please remove spaces from images names)</b><br><br>
 
 {!! Form::open(["url"=>"slider-update", "files"=>true,"class"=>"form-group"]) !!}
 

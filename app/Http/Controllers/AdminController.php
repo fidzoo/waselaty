@@ -46,7 +46,7 @@ class AdminController extends Controller
     	$user= new User;
     	$user->name= $request->input('name');
     	$user->email= $request->input('email');
-    	$user->password= bcrypt($request->input('email'));
+    	$user->password= bcrypt($request->input('password'));
     	$user->user_group= 'admin';
         $user->api_token= str_random(60);
     	$user->save();

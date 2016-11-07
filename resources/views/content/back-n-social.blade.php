@@ -12,6 +12,7 @@
 @endif
 
 <h3>تحديث صور السلايدر:</h3><br>
+<b>(برجاء حذف أي مسافات من أسماء الصور)</b><br><br>
 
 {!! Form::open(["url"=>"slider-update", "files"=>true,"class"=>"form-group"]) !!}
 
