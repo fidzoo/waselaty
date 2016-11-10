@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('user_group')->length(11);
             $table->integer('company_id');
-            $table->string('country_code')->unsigned();
+            $table->string('country_code');
             $table->string('phone')->length(30);
             $table->string('api_token')->length(60)->unique();
             $table->rememberToken();

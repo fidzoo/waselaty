@@ -4,11 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mcategory;
+use App\Category;
 use App\Job;
 use App\Http\Requests;
 
 class apiShowController extends Controller
 {
+    /*
+    * All Categories list
+    */
+    public function allCats()
+    {
+        $all_cats= Mcategory::with('categories')->get();
+        
+        return response(['all_cats'=>$all_cats]);
+    }
+
+
     /*
     * Main Category Display
     */
@@ -20,7 +32,7 @@ class apiShowController extends Controller
     	date_default_timezone_set("Asia/Qatar");
             $current_time= date('Y-m-d H:m:s');
 
-    	$rank_jobs= Job::whereHas('categories', function($q)use($main_cat){ 
+        $premium_jobs= Job::whereHas('categories', function($q)use($main_cat){ 
                 $q->where('categories.mcategory_id', $main_cat->id);
                     })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
         
@@ -28,12 +40,13 @@ class apiShowController extends Controller
         $jobs= Job::whereHas('categories', function($q)use($main_cat){ 
                 $q->where('categories.mcategory_id', $main_cat->id);
                     })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('approved', 1)->where('add_rank', 0)->paginate(6);
-    
+
+
         //for results sort purpose
         $hidden= 'mcategory_page';
         $cat_id= $main_cat->id;
 
-        return response(['rank_jobs'=>$rank_jobs, 'jobs'=>$jobs]);
+        return response(['premium_jobs'=>$premium_jobs, 'jobs'=>$jobs]);
     }
 
     /*
@@ -44,7 +57,7 @@ class apiShowController extends Controller
         date_default_timezone_set("Asia/Qatar");
         $current_time= date('Y-m-d H:m:s');
 
-        $rank_jobs= Job::whereHas('categories', function($q)use($id){ 
+        $premium_jobs= Job::whereHas('categories', function($q)use($id){ 
                 $q->where('categories.id', $id);
                     })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
         
@@ -53,7 +66,7 @@ class apiShowController extends Controller
                 $q->where('categories.id', $id);
                     })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('approved', 1)->where('add_rank', 0)->paginate(6);
 
-        return response(['rank_jobs'=>$rank_jobs, 'jobs'=>$jobs]);
+        return response(['premium_jobs'=>$premium_jobs, 'jobs'=>$jobs]);
     }
 
     /*
@@ -81,13 +94,16 @@ class apiShowController extends Controller
     /*
     * Search Results
     */
-    public function search(Request $request)
+    public function textSearch(Request $request)
     {
+        date_default_timezone_set("Asia/Qatar");
+        $current_time= date('Y-m-d H:m:s');
+
         $query= $request->input('search');
         
-        $rank_jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 1)->where('approved', 1)->paginate(6);
-        $jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 0)->where('approved', 1)->paginate(6);
+        $premium_jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 1)->where('approved', 1)->where('expire_date', '>', $current_time)->paginate(6);
+        $jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 0)->where('approved', 1)->where('expire_date', '>', $current_time)->paginate(6);
 
-        return response(['rank_jobs'=>$rank_jobs, 'jobs'=>$jobs]);
+        return response(['premium_jobs'=>$premium_jobs, 'jobs'=>$jobs]);
     }
 }

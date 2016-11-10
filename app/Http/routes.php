@@ -61,8 +61,11 @@ Route::post('comments/{id}', 'CommentController@save');
 Route::get('adds-pay', 'AddsStatsController@payDisplay');
 Route::resource('prices', 'PriceController', ['except' => [
     'show']]);
+
+//Sorting routes:
 Route::get('result-sort', 'ArrangeController@sort');
 Route::get('ser-sort', 'SearchController@sort');
+//---------------
 
 Route::get('person-reg', 'Auth\AuthController@showRegistrationForm');
 Route::get('new-admin', 'AdminController@showAdminForm');
@@ -118,10 +121,19 @@ Route::get('/ajax-banners', function(){
 //-------------------
 //API Routes 
 Route::group(['prefix'=> 'api'], function(){
+	Route::get('all-cats', 'apiShowController@allCats');
+
 	Route::get('mcat/{id}', 'apiShowController@mainCatShow');
-	Route::get('category/{id}', 'apiShowController@categoryShow');
+	Route::get('main-cat-sort', 'ArrangeController@apiMainCatSort');
+	
+	Route::get('subcat/{id}', 'apiShowController@categoryShow');
+	Route::get('sub-cat-sort', 'ArrangeController@apiSubCatSort');
+
 	Route::get('job/{id}', 'apiShowController@jobShow');
-	Route::get('api-search', 'apiShowController@search');
+
+	Route::get('text-search', 'apiShowController@textSearch');
+	Route::get('text-search-sort', 'ArrangeController@textSearchSort');
+
 	Route::get('login', 'Auth\AuthController@showLoginForm');
 });
 

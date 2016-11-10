@@ -100,7 +100,7 @@
                 <div class="col-lg-12">
                    <div class="contain-pager">
                     <ul class="pagination">
-                        {!!$jobs->links()!!}
+                        {!!$jobs->appends(Request::only(['page_results', 'cat_id', 'order']))->links()!!}
                     </ul></div>
                     </div>
             </div>

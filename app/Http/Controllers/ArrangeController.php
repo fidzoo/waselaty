@@ -26,7 +26,7 @@ class ArrangeController extends Controller
     			 if($hidden == 'mcategory_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
@@ -44,7 +44,7 @@ class ArrangeController extends Controller
     			elseif($hidden == 'category_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
             
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
@@ -66,7 +66,7 @@ class ArrangeController extends Controller
     			if($hidden == 'mcategory_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->where('add_rank', 1)->where('approved', 1)->paginate(6);
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
@@ -84,7 +84,7 @@ class ArrangeController extends Controller
                 elseif($hidden == 'category_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->where('add_rank', 1)->where('approved', 1)->paginate(6);
             
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
@@ -106,7 +106,7 @@ class ArrangeController extends Controller
                  if($hidden == 'mcategory_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
@@ -124,7 +124,7 @@ class ArrangeController extends Controller
                 elseif($hidden == 'category_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
             
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
@@ -146,7 +146,7 @@ class ArrangeController extends Controller
     			if($hidden == 'mcategory_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('add_rank', 1)->where('approved', 1)->paginate(6);
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.mcategory_id', $cat_id);
@@ -164,7 +164,7 @@ class ArrangeController extends Controller
                 elseif($hidden == 'category_page'){
                     $rank_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
                     $q->where('categories.id', $cat_id);
-                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('add_rank', 1)->where('approved', 1)->get();
+                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('add_rank', 1)->where('approved', 1)->paginate(6);
             
 
                     $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
@@ -203,4 +203,184 @@ class ArrangeController extends Controller
         return view('mcategory.single-mcategory', compact('jobs', 'rank_jobs', 'mcat_ar', 'cat_ar', 'country_ar', 'banner_up', 'banner_mid', 'banner_down', 'hidden', 'cat_id'));
 
     }
+
+    /**
+    * Api Main Category Sort Function
+    **/
+    public function apiMainCatSort(Request $request)
+    {
+        $option= $request->input('order');
+        $cat_id= $request->input('cat_id');
+        
+        date_default_timezone_set("Asia/Qatar");
+        $current_time= date('Y-m-d H:m:s');
+
+        switch ($option) {
+            case 'recent':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('approved', 1)->where('add_rank', 0)->paginate(6);
+
+                break;
+            
+            case 'old':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->where('add_rank', 1)->where('approved', 1)->paginate(6);
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->where('approved', 1)->where('add_rank', 0)->paginate(6);
+
+                break;
+
+            case 'most-exp':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('approved', 1)->where('add_rank', 0)->paginate(6);
+
+                break;
+
+            case 'low-exp':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('add_rank', 1)->where('approved', 1)->paginate(6);
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.mcategory_id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('approved', 1)->where('add_rank', 0)->paginate(6);
+                    
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        return response(['premium_jobs'=>$premium_jobs, 'jobs'=>$jobs]); 
+    }
+
+    /**
+    * Api Sub Category Sort Function
+    **/
+    public function apiSubCatSort(Request $request)
+    {
+        $option= $request->input('order');
+        $cat_id= $request->input('cat_id');
+        
+        date_default_timezone_set("Asia/Qatar");
+        $current_time= date('Y-m-d H:m:s');
+
+        switch ($option) {
+            case 'recent':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
+            
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('id','desc')->where('approved', 1)->where('add_rank', 0)->paginate(6);
+
+                break;
+            
+            case 'old':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->where('add_rank', 1)->where('approved', 1)->paginate(6);
+            
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->where('approved', 1)->where('add_rank', 0)->paginate(6);
+
+                break;
+
+            case 'most-exp':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('add_rank', 1)->where('approved', 1)->paginate(6);
+            
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience','desc')->where('approved', 1)->where('add_rank', 0)->paginate(6);
+
+                break;
+
+            case 'low-exp':
+                    $premium_jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('add_rank', 1)->where('approved', 1)->paginate(6);
+            
+
+                    $jobs= Job::whereHas('categories', function($q)use($cat_id){ 
+                    $q->where('categories.id', $cat_id);
+                        })->where('expire_date', '>', $current_time)->orderBy('experience')->where('approved', 1)->where('add_rank', 0)->paginate(6);
+
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        return response(['premium_jobs'=>$premium_jobs, 'jobs'=>$jobs]);
+    }
+
+    /*
+    * Sort Text Search results
+    */
+    public function textSearchSort(Request $request)
+    {
+        date_default_timezone_set("Asia/Qatar");
+        $current_time= date('Y-m-d H:m:s');
+
+        $option= $request->input('order');
+        $query= $request->input('search');
+
+
+        switch ($option) {
+            case 'recent':
+                $premium_jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 1)->where('approved', 1)->where('expire_date', '>', $current_time)->orderBy('id','desc')->paginate(6);
+
+                $jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 0)->where('approved', 1)->where('expire_date', '>', $current_time)->orderBy('id','desc')->paginate(6);       
+
+                break;
+            
+            case 'old':
+                $premium_jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 1)->where('approved', 1)->where('expire_date', '>', $current_time)->paginate(6);
+
+                $jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 0)->where('approved', 1)->where('expire_date', '>', $current_time)->paginate(6);        
+                break;
+
+            case 'most-exp':
+                $premium_jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 1)->where('approved', 1)->where('expire_date', '>', $current_time)->orderBy('experience','desc')->paginate(6);
+
+                $jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 0)->where('approved', 1)->where('expire_date', '>', $current_time)->orderBy('experience','desc')->paginate(6);   
+
+                break;
+
+            case 'low-exp':
+                $premium_jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 1)->where('approved', 1)->where('expire_date', '>', $current_time)->orderBy('experience')->paginate(6);
+
+                $jobs= Job::where('ar_title', 'like', '%'.$query.'%')->where('add_rank', 0)->where('approved', 1)->where('expire_date', '>', $current_time)->orderBy('experience')->paginate(6);   
+
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        return response(['premium_jobs'=>$premium_jobs, 'jobs'=>$jobs]);
+    } 
 }
