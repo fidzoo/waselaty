@@ -37,7 +37,7 @@ class SiteContentController extends Controller
 		if(Session::get('lang') == 'en'){
 			return Redirect::back()->with('message', 'Update done successfully!');
 			}
-    	return Redirect::back()->with('message', 'تم التحديث بنحاج!');
+    	return Redirect::back()->with('message', 'تم التحديث بنجاح!');
     }
 
     //For Background and social media
@@ -47,6 +47,10 @@ class SiteContentController extends Controller
         $silder_img2= SiteContent::where('item', 'slider_img2')->first();
         $silder_img3= SiteContent::where('item', 'slider_img3')->first();
 
+        //Home page icons
+        $prof_jobs= SiteContent::where('item', 'profession_icons')->first();
+        $serv_jobs= SiteContent::where('item', 'service_icons')->first();
+
         //Social media
         $facebook= SiteContent::where('item', 'facebook')->first();
         $twitter= SiteContent::where('item', 'twitter')->first();
@@ -54,9 +58,9 @@ class SiteContentController extends Controller
         $instagram= SiteContent::where('item', 'instagram')->first();
 
         if(Session::get('lang') == 'en'){
-            return view('en.content.back-n-social', compact('silder_img1', 'silder_img2', 'silder_img3', 'facebook', 'twitter', 'youtube', 'instagram'));
+            return view('en.content.back-n-social', compact('silder_img1', 'silder_img2', 'silder_img3', 'prof_jobs', 'serv_jobs', 'facebook', 'twitter', 'youtube', 'instagram'));
         }
-        return view('content.back-n-social', compact('silder_img1', 'silder_img2', 'silder_img3', 'facebook', 'twitter', 'youtube', 'instagram'));
+        return view('content.back-n-social', compact('silder_img1', 'silder_img2', 'silder_img3', 'prof_jobs', 'serv_jobs', 'facebook', 'twitter', 'youtube', 'instagram'));
 
     }
 
@@ -102,6 +106,38 @@ class SiteContentController extends Controller
             $silder_img3->save();
             }
         }
+        //Update Home Icons
+        elseif ($request->is('icons-update')){
+            
+            //Update professional jobs icon
+            if ($request->file('prof_image')){ 
+            File::delete('assets/images/profession.png');
+            $file= $request->file('prof_image');
+            $destinationPath= 'assets/images';
+            $filename= 'profession.png';
+            $file->move($destinationPath, $filename);
+            }
+
+            //Update service jobs icon
+            if ($request->file('serv_image')){ 
+            File::delete('assets/images/services.png');
+            $file= $request->file('serv_image');
+            $destinationPath= 'assets/images';
+            $filename= 'services.png';
+            $file->move($destinationPath, $filename);
+            }
+
+        $prof_icon= SiteContent::where('item', 'profession_icons')->first();
+        $serv_icon= SiteContent::where('item', 'service_icons')->first();
+        $prof_icon->ar_content= $request->input('ar_profession');
+        $prof_icon->en_content= $request->input('en_profession');
+        $serv_icon->ar_content= $request->input('ar_service');
+        $serv_icon->en_content= $request->input('en_service');
+        $prof_icon->save();
+        $serv_icon->save();
+
+        }
+        //Update Social Media links
         elseif ($request->is('social-update')){
         //Update Social Media Links
         $facebook= SiteContent::where('item', 'facebook')->first();

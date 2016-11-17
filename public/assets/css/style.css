@@ -207,7 +207,7 @@ section#slider {
   position: relative;
   background-image: url(../images/main-slider.jpg);
   background-color: #430022;
-  background-size: contain;
+  background-size: 100%;
   overflow: hidden;
   min-width: 100%;
   height: auto;

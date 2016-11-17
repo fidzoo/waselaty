@@ -37,7 +37,40 @@
 <br><br>
 </div>
 
+
 -----------------------------------------------------------------------
+<br><br>
+
+<h3>Home Page Icons Update:</h3><br>
+
+{!! Form::open(["url"=>"icons-update", "files"=>true,"class"=>"form-group"]) !!}
+
+<div class="col-lg-6 banners">
+{!! HTML::image('assets/images/services.png', "", ["width"=>"150", "id"=>"ban-img-up"]) !!}<br><br>
+{!! Form::file('serv_image') !!}<br>
+{!! Form::label('Arabic Title:') !!}
+{!! Form::text('ar_service', $serv_jobs->ar_content) !!}<br>
+{!! Form::label('English Title:') !!}
+{!! Form::text('en_service', $serv_jobs->en_content) !!}
+</div>
+
+<div class="col-lg-6 banners">
+{!! HTML::image('assets/images/profession.png', "", ["width"=>"150", "id"=>"ban-img-up"]) !!}<br><br>
+{!! Form::file('prof_image') !!}<br>
+{!! Form::label('Arabic Title:') !!}
+{!! Form::text('ar_profession', $prof_jobs->ar_content) !!}<br>
+{!! Form::label('English Title:') !!}
+{!! Form::text('en_profession', $prof_jobs->en_content) !!}
+<br><br></div>
+<div>
+{!! Form::submit('Update', ['class'=>'btn btn-info']) !!}
+{!! Form::close() !!}
+<br><br>
+</div>
+
+
+-----------------------------------------------------------------------
+<br><br>
 <br><br>
 <h3>Social Meida Links Update:</h3><br>
 <br>
@@ -55,7 +88,7 @@
 {!! Form::label('Instagram URL') !!}
 {!! Form::text('instagram', $instagram->ar_content, ['class'=>'form-control']) !!}<br><br>
 
-{!! Form::submit('تحديث', ['class'=>'btn btn-info']) !!}
+{!! Form::submit('Update', ['class'=>'btn btn-info']) !!}
 {!! Form::close() !!}
 
 @stop

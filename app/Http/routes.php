@@ -82,6 +82,7 @@ Route::post('site-content', 'SiteContentController@updateContent');
 
 Route::get('back-n-social', 'SiteContentController@backChange');
 Route::post('slider-update', 'SiteContentController@updateBack');
+Route::post('icons-update', 'SiteContentController@updateBack');
 Route::post('social-update', 'SiteContentController@updateBack');
 
 
@@ -133,6 +134,14 @@ Route::group(['prefix'=> 'api'], function(){
 
 	Route::get('text-search', 'apiShowController@textSearch');
 	Route::get('text-search-sort', 'ArrangeController@textSearchSort');
+
+	Route::get('adv-search', 'apiShowController@advSearch');
+	Route::get('adv-search-sort', 'ArrangeController@advSearchSort');
+
+	Route::get('countries', 'apiShowController@getCountries');
+
+	Route::get('comments/{id}', 'CommentController@apiShowComments');
+	Route::post('comments/{id}', 'CommentController@apiAddComments');
 
 	Route::get('login', 'Auth\AuthController@showLoginForm');
 });

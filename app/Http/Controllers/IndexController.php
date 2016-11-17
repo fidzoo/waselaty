@@ -41,13 +41,17 @@ class IndexController extends Controller
         $silder_img2= SiteContent::where('item', 'slider_img2')->first();
         $silder_img3= SiteContent::where('item', 'slider_img3')->first();
 
+        //Home icons 
+        $prof_icon= SiteContent::where('item', 'profession_icons')->first();
+        $serv_icon= SiteContent::where('item', 'service_icons')->first();
+
         //Site Policy part
         $policy= SiteContent::where('item', 'policy')->first();
 
         if(Session::get('lang') == 'en'){
-        	return view('en.index', compact('mcat_en', 'cat_en', 'country_en', 'jobs_count', 'silder_img1', 'silder_img2', 'silder_img3', 'banner_up', 'banner_mid', 'banner_down', 'policy'));
+        	return view('en.index', compact('mcat_en', 'cat_en', 'country_en', 'jobs_count', 'silder_img1', 'silder_img2', 'silder_img3', 'prof_icon', 'serv_icon', 'banner_up', 'banner_mid', 'banner_down', 'policy'));
         }
-	    return view('index', compact('mcat_ar', 'cat_ar', 'country_ar', 'jobs_count', 'banner_up', 'silder_img1', 'silder_img2', 'silder_img3', 'banner_mid', 'banner_down', 'policy'));
+	    return view('index', compact('mcat_ar', 'cat_ar', 'country_ar', 'jobs_count', 'banner_up', 'silder_img1', 'silder_img2', 'silder_img3', 'prof_icon', 'serv_icon', 'banner_mid', 'banner_down', 'policy'));
 
 	}
 }	

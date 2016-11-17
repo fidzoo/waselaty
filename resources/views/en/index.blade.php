@@ -28,7 +28,7 @@
                                 <div class="col-sm-4 col-xs-12 wow fadeIn" data-wow-delay=".6s" data-wow-duration="2s">
 <a href='{!! URL::to("ar/mcategory/1") !!}'>
                                     <div class="cat">
-<img src='{!! asset("assets/images/services.png") !!}' alt="وظائف خدمية"> </div> <h2>وظائف خدمية</h2></div></a>
+<img src='{!! asset("assets/images/services.png") !!}' alt="وظائف خدمية"> </div> <h2>{!!$serv_icon->ar_content!!}</h2></div></a>
                                 <div class="col-sm-4 col-xs-12 wow fadeIn" data-wow-delay=".6s" data-wow-duration="2s">
                                     <div class="ad">
                                         <a href='{!! URL::to( "http://$banner_mid->link") !!}' target="_blank"><img src='{!! asset("$banner_mid->en_image") !!}' alt=""></a>
@@ -38,7 +38,7 @@
 <a href='{!! URL::to("en/mcategory/1") !!}'>                                   
  <div class="cat"> <img src='{!! asset("assets/images/services.png") !!}' alt="Services Jobs"> </div>
                                     
-                                        <h2>Services Jobs</h2>
+                                        <h2>{!!$serv_icon->en_content!!}</h2>
                                 </div>
  </a>
                             </div>
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col-sm-4 col-xs-12 wow fadeIn" data-wow-delay=".2s" data-wow-duration="2s">
 <a href='{!! URL::to("ar/mcategory/2") !!}'>
-                                    <div class="cat"> <img src='{!! asset("assets/images/profession.png") !!}' alt="وظائف مهنية"> </div> <h2>وظائف مهنية</h2> </div></a>
+                                    <div class="cat"> <img src='{!! asset("assets/images/profession.png") !!}' alt="وظائف مهنية"> </div> <h2>{!!$prof_icon->ar_content!!}</h2> </div></a>
                                 <div class="col-sm-4 col-xs-12 wow fadeIn" data-wow-delay=".2s" data-wow-duration="2s">
                                     <div class="ad">
                                         <a href='{!! URL::to( "http://$banner_down->link") !!}' target="_blank"><img src='{!! asset("$banner_down->en_image") !!}' alt=""></a>
@@ -58,7 +58,7 @@
 <a href='{!! URL::to("en/mcategory/2") !!}'>
                                     <div class="cat"> <img src='{!! asset("assets/images/profession.png") !!}' alt="Profession Jobs"> </div>
                                     
-                                        <h2>Professional Jobs</h2>
+                                        <h2>{!!$prof_icon->en_content!!}</h2>
                                 </div>
 </a>
                             </div>
@@ -81,12 +81,12 @@
 
 <style type="text/css">
         section#slider.class1 {
-  background-image: url(assets/images/main-slider.jpg); }
+  background-image: url({!! $silder_img1->ar_content !!}); }
 
 section#slider.class2 {
-  background-image: url(assets/images/main-slider-2.jpg); }
+  background-image: url({!! $silder_img2->ar_content !!}); }
 
 section#slider.class3 {
-  background-image: url(assets/images/main-slider-3.jpg); }
+  background-image: url({!! $silder_img3->ar_content !!}); }
 </style>
 @stop

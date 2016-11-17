@@ -47,11 +47,11 @@ class SearchController extends Controller
         /*The idea in search code is if it got "all" value it skip this condition 
         so it get all results without this condition*/
 
-        //Normal Companies 
+        //Normal Jobs 
         $search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all"){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all"){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -60,25 +60,25 @@ class SearchController extends Controller
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 0)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all"){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all"){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('id','desc')->paginate(6); 
 
         
-        //Companies with rank 1 
+        //Jobs with rank 1 
         $rank_search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all"){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all"){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -87,15 +87,15 @@ class SearchController extends Controller
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 1)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all"){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all"){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('id','desc')->get(); 
@@ -148,9 +148,9 @@ switch ($option) {
     case 'recent':
             //Normal Companies 
             $search= Job::where(function($que) use($mcategory, $category){
-            if($mcategory !== "all"){
+            if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
             
-                if($category !== "all"){
+                if($category !== null && $category !== "all" && $category !== ""){
                     //search in many to many relation
                     $que->whereHas('categories', function($q)use($category){ 
                     $q->where('categories.id', $category);
@@ -159,15 +159,15 @@ switch ($option) {
             }
             })->where('expire_date', '>', $current_time)->where('add_rank', 0)
             ->where(function($que) use($gender){
-                if($gender !== "all"){
+                if($gender !== null && $gender !== "all" && $gender !== ""){
                     $que->where('gender', $gender);
                 }
             })->where(function($que) use($country){
-                if($country !== "all"){
+                if($country !== null && $country !== "all"){
                     $que->where('country_id', $country);
                 }
             })->where(function($que) use($experience){
-                if($experience !== "all"){
+                if($experience !== null && $experience !== "all" && $experience !== ""){
                     $que->where('experience', $experience);
                 }
             })->where('approved', 1)->orderBy('id','desc')->paginate(6); 
@@ -175,9 +175,9 @@ switch ($option) {
             
             //Companies with rank 1 
             $rank_search= Job::where(function($que) use($mcategory, $category){
-            if($mcategory !== "all"){
+            if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
             
-                if($category !== "all"){
+                if($category !== null && $category !== "all" && $category !== ""){
                     //search in many to many relation
                     $que->whereHas('categories', function($q)use($category){ 
                     $q->where('categories.id', $category);
@@ -186,15 +186,15 @@ switch ($option) {
             }
             })->where('expire_date', '>', $current_time)->where('add_rank', 1)
             ->where(function($que) use($gender){
-                if($gender !== "all"){
+                if($gender !== null && $gender !== "all" && $gender !== ""){
                     $que->where('gender', $gender);
                 }
             })->where(function($que) use($country){
-                if($country !== "all"){
+                if($country !== null && $country !== "all"){
                     $que->where('country_id', $country);
                 }
             })->where(function($que) use($experience){
-                if($experience !== "all"){
+                if($experience !== null && $experience !== "all" && $experience !== ""){
                     $que->where('experience', $experience);
                 }
             })->where('approved', 1)->orderBy('id','desc')->get();
@@ -208,9 +208,9 @@ switch ($option) {
     case 'old':
         //Normal Companies 
         $search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all" && $category !== ""){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -219,15 +219,15 @@ switch ($option) {
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 0)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all" && $gender !== ""){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all" && $experience !== ""){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('id')->paginate(6); 
@@ -235,9 +235,9 @@ switch ($option) {
         
         //Companies with rank 1 
         $rank_search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all" && $category !== ""){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -246,15 +246,15 @@ switch ($option) {
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 1)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all" && $gender !== ""){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all" && $experience !== ""){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('id')->get(); 
@@ -268,9 +268,9 @@ switch ($option) {
     case 'most-exp':
         //Normal Companies 
         $search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all" && $category !== ""){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -279,15 +279,15 @@ switch ($option) {
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 0)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all" && $gender !== ""){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all" && $experience !== ""){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('experience','desc')->paginate(6); 
@@ -295,9 +295,9 @@ switch ($option) {
         
         //Companies with rank 1 
         $rank_search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all" && $category !== ""){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -306,15 +306,15 @@ switch ($option) {
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 1)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all" && $gender !== ""){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all" && $experience !== ""){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('experience','desc')->get(); 
@@ -328,9 +328,9 @@ switch ($option) {
     case 'low-exp':
         //Normal Companies 
         $search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all" && $category !== ""){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -339,15 +339,15 @@ switch ($option) {
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 0)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all" && $gender !== ""){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all" && $experience !== ""){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('experience')->paginate(6); 
@@ -355,9 +355,9 @@ switch ($option) {
         
         //Companies with rank 1 
         $rank_search= Job::where(function($que) use($mcategory, $category){
-        if($mcategory !== "all"){
+        if($mcategory !== null && $mcategory !== "all" && $mcategory !== ""){
         
-            if($category !== "all"){
+            if($category !== null && $category !== "all" && $category !== ""){
                 //search in many to many relation
                 $que->whereHas('categories', function($q)use($category){ 
                 $q->where('categories.id', $category);
@@ -366,15 +366,15 @@ switch ($option) {
         }
         })->where('expire_date', '>', $current_time)->where('add_rank', 1)
         ->where(function($que) use($gender){
-            if($gender !== "all"){
+            if($gender !== null && $gender !== "all" && $gender !== ""){
                 $que->where('gender', $gender);
             }
         })->where(function($que) use($country){
-            if($country !== "all"){
+            if($country !== null && $country !== "all"){
                 $que->where('country_id', $country);
             }
         })->where(function($que) use($experience){
-            if($experience !== "all"){
+            if($experience !== null && $experience !== "all" && $experience !== ""){
                 $que->where('experience', $experience);
             }
         })->where('approved', 1)->orderBy('experience')->get();

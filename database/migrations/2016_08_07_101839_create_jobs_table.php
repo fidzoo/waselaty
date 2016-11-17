@@ -29,7 +29,7 @@ class CreateJobsTable extends Migration
             $table->integer('gender');//0:Male, 1:female, 2:both
             $table->integer('salary')->nullable();
             $table->string('currency')->length(20);
-            $table->integer('experience')->nullable();
+            $table->integer('experience')->nullable(); //[0=> 'أقل من سنة', 1=>'سنة واحدة', 2=>'سنتان', 3=>'3 سنوات', 4=>'4 سنوات', 5=>'5 سنوات', 6=>'أكثر من 6 سنوات' ]
             $table->string('phone')->length(50);
             $table->string('email')->length(50);
             $table->string('image');
