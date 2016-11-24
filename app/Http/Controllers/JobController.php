@@ -199,15 +199,48 @@ class JobController extends Controller
 
             }
 
-        if ($request->file('image')){
+                //it is delete old pic first the upload new one
+            if ($request->file('image')){
+            if ($job->image != "assets/images/was_default_user.png"){
+            File::delete($job->image);
+                }
             $file= $request->file('image');
             $destinationPath= 'images';
             $filename= rand().$file->getClientOriginalName();
             $file->move($destinationPath, $filename);
+        //add Watermark to the image
+            $img_path= "images/".$filename;
+            $watermark= imagecreatefrompng('assets/images/water-mark.png');
+            $watermark_width = imagesx($watermark);  
+            $watermark_height = imagesy($watermark);
+            $image = imagecreatetruecolor($watermark_width, $watermark_height); 
 
+            switch(pathinfo($img_path, PATHINFO_EXTENSION)){ //determine uploaded image type 
+            //Create new image from file
+            case 'png': 
+                $image =  imagecreatefrompng($img_path);
+                break;
+            case 'gif':
+                $image =  imagecreatefromgif($img_path);
+                break;          
+            case 'jpeg': case 'pjpeg': case 'jpg':
+                $image = imagecreatefromjpeg($img_path);
+                break;
+            default:
+                return 'Image Format is not valid, kindly press back and upload a valid image format (.png / .gif / .jpeg / .jpg)';
+        } 
+            
+            $size = getimagesize($img_path);  
+            $dest_x = $size[0] - $watermark_width - 5;  
+            $dest_y = $size[1] - $watermark_height - 5;  
+            imagecopy($image, $watermark, $dest_x, $dest_y, 0, 0, $watermark_width, $watermark_height); 
+            imagejpeg($image, $destinationPath.'/'.$filename , 90);
+            imagedestroy($image);  
+            imagedestroy($watermark);
+            //save image path to the job
             $job->image= "images/".$filename;
-        }
-
+            }
+        
         $job->save();
         $job->categories()->sync($request->get('categories'));
 
@@ -238,6 +271,11 @@ class JobController extends Controller
 
         $job= Job::findOrFail($id);
         $comments= $job->comments()->where('approve', 0)->get();
+
+        //Throw 404 if job is not approved yet
+        if($job->approved != 1){
+            abort(404);
+        }
         
         //related jobs (random category method)
         $categories= $job->categories()->get();
@@ -248,7 +286,7 @@ class JobController extends Controller
           }
         $random= rand(0,count($categories)-1);
         $selected_cat= Category::where('id', $selected[$random])->firstOrfail();
-        $relate_jobs= $selected_cat->jobs()->where('user_id', $job->user_id)->get();
+        $relate_jobs= $selected_cat->jobs()->where('user_id', $job->user_id)->where('approved', 1)->get();
 
         //Banners:
         $banner_up= Banner::where('category_id', $selected_cat->id)->where('ar_position', 'داخلي - أعلى')->first();
@@ -374,8 +412,10 @@ class JobController extends Controller
                 //this admin condition couz date will be set to diffrent value due it is not enabled by user to change so it will put old value.                
           }
           
+    
+          
         //it is delete old pic first the upload new one
-        if ($request->file('image')){
+            if ($request->file('image')){
             if ($job->image != "assets/images/was_default_user.png"){
             File::delete($job->image);
                 }
@@ -383,10 +423,39 @@ class JobController extends Controller
             $destinationPath= 'images';
             $filename= rand().$file->getClientOriginalName();
             $file->move($destinationPath, $filename);
+        //add Watermark to the image
+            $img_path= "images/".$filename;
+            $watermark= imagecreatefrompng('assets/images/water-mark.png');
+            $watermark_width = imagesx($watermark);  
+            $watermark_height = imagesy($watermark);
+            $image = imagecreatetruecolor($watermark_width, $watermark_height); 
 
+            switch(pathinfo($img_path, PATHINFO_EXTENSION)){ //determine uploaded image type 
+            //Create new image from file
+            case 'png': 
+                $image =  imagecreatefrompng($img_path);
+                break;
+            case 'gif':
+                $image =  imagecreatefromgif($img_path);
+                break;          
+            case 'jpeg': case 'pjpeg': case 'jpg':
+                $image = imagecreatefromjpeg($img_path);
+                break;
+            default:
+                return 'Image Format is not valid, kindly press back and upload a valid image format (.png / .gif / .jpeg / .jpg)';
+        } 
+            
+            $size = getimagesize($img_path);  
+            $dest_x = $size[0] - $watermark_width - 5;  
+            $dest_y = $size[1] - $watermark_height - 5;  
+            imagecopy($image, $watermark, $dest_x, $dest_y, 0, 0, $watermark_width, $watermark_height); 
+            imagejpeg($image, $destinationPath.'/'.$filename , 90);
+            imagedestroy($image);  
+            imagedestroy($watermark);
+            //save image path to the job
             $job->image= "images/".$filename;
             }
-            
+
         if(Session::get('group') == 'admin'){
             $approve= $request->input('review');
             if($approve == 'موافقة' || $approve == 'Approve'){

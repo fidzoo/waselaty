@@ -1,6 +1,7 @@
 @extends('layouts.ar-main')
 
 @section('content')
+
     <div class="main-container">
         <div class="clearfix"></div>
         <div class="container">
@@ -41,8 +42,12 @@
                     <h1 class="center-text">{!!$job->ar_title!!}</h1>
                 </div>
                 <ul class="jobs">
-                    <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
-                        <div class="col-lg-4 col-md-4"><img src='{!! asset("$job->image") !!}' alt="job-image"> </div>
+                    <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s" style="overflow: visible;">
+                        <div class="col-lg-4 col-md-4" id="job-image">
+                        <img id="zoom_01"  src='{!! asset("$job->image") !!}' data-zoom-image='{!! asset("$job->image") !!}' alt="job-image"> </div>
+
+   
+
                         <div class="col-lg-8 last col-md-8">
                             <ul class="details">
                                 <li>تاريخ الإضافة: {!!$job->created_at!!}</li>
@@ -101,7 +106,8 @@
                             @continue
                         @endif
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
-                        <div class="col-lg-2 col-md-2"><img src='{!! asset("$re_job->image") !!}' alt="{!!$re_job->ar_title!!}"> </div>
+                        <div class="col-lg-2 col-md-2">
+                        <img class='zoom_01' src='{!! asset("$re_job->image") !!}' data-zoom-image='{!! asset("$re_job->image") !!}' alt="{!!$re_job->ar_title!!}"> </div>
                         <div class="col-lg-8 col-md-8">
                             <a href='{!! URL::to("jobs/$re_job->id") !!}'>
                                 <h2>{!!$re_job->ar_title!!}</h2>
@@ -123,4 +129,7 @@
             </div>
         </div>
     </div>
+
+
 @stop
+

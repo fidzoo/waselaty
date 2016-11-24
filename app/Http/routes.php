@@ -143,12 +143,9 @@ Route::group(['prefix'=> 'api'], function(){
 	Route::get('comments/{id}', 'CommentController@apiShowComments');
 	Route::post('comments/{id}', 'CommentController@apiAddComments');
 
-	Route::get('login', 'Auth\AuthController@showLoginForm');
 });
 
-Route::group(['prefix'=> 'api', 'middleware'=> 'auth:api'], function(){
-	
-});
+
 
 
 
