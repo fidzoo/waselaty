@@ -206,7 +206,7 @@ header .search-header {
 section#slider {
   position: relative;
   background-image: url(../images/main-slider.jpg);
-  background-color: #430022;
+  background-color: white;
   background-size: 100%;
   overflow: hidden;
   min-width: 100%;

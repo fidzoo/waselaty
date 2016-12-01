@@ -80,8 +80,12 @@
 <h4><b>Contact Details</b></h4>
 {!! Form::label('Tel.') !!}<br>
 {!! Form::text('phone', "", ['class'=>'form-control']) !!}<br>
+{!! Form::label('Mobile') !!}<br>
+{!! Form::text('mobile', "", ['class'=>'form-control']) !!}<br>
 {!! Form::label('Email') !!}<br>
 {!! Form::text('email', "", ['class'=>'form-control']) !!}<br>
+{!! Form::label('Map Location') !!}<br>
+{!! Form::text('map', "", ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('Job Image') !!}<br>
 {!! Form::file('image') !!}<br>

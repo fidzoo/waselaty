@@ -376,6 +376,16 @@ if ( typeof Object.create !== 'function' ) {
 						if(self.options.tint && self.options.zoomType != "inner") {self.showHideTint("hide");}
 					});  
 				}
+
+				self.zoomContainer.bind('mouseenter', function(e){ 
+					$('.zoomWindowContainer div').append("<p id='text'>test</p>");
+				}); 
+
+				self.zoomContainer.bind('mouseleave', function(e){ 
+					$('p#text').remove();
+				}); 
+
+
 				//Needed to work in IE
 				self.$elem.bind('mousemove', function(e){   
 					if(self.overWindow == false){self.setElements("show");}

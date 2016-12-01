@@ -31,7 +31,9 @@ class CreateJobsTable extends Migration
             $table->string('currency')->length(20);
             $table->integer('experience')->nullable(); //[0=> 'أقل من سنة', 1=>'سنة واحدة', 2=>'سنتان', 3=>'3 سنوات', 4=>'4 سنوات', 5=>'5 سنوات', 6=>'أكثر من 6 سنوات' ]
             $table->string('phone')->length(50);
+            $table->string('mobile')->length(50)->nullable();
             $table->string('email')->length(50);
+            $table->string('map')->length(300);
             $table->string('image');
             $table->string('duration')->length(10);
             $table->datetime('expire_date');

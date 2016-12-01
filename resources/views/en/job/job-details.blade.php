@@ -1,6 +1,16 @@
 @extends('en.layouts.en-main')
 
 @section('content')
+
+<style type="text/css">
+    
+    li.mapp iframe
+    {
+        width: 516px !important;
+        height: 300px !important;
+    }
+</style>
+
     <div class="main-container">
         <div class="clearfix"></div>
         <div class="container">
@@ -55,6 +65,11 @@
                                 <li>Job Title : {!!$job->categories[0]->en_title!!}</li>
                                 <li>Experience years : {!!$job->experience!!}</li>
                                 <li>Gender : {!!$gender!!}</li>
+                                @if($job_owner->user_group == 'company')
+                                <li>Company : {!!$job_owner->company->en_company!!}</li>
+                                @endif
+                                <li>Tel. : {!!$job->phone!!}</li>
+                                <li class="mapp">Location : {!!$job->map!!}</li>
                             </ul>
                         </div>
                         <div class="clearfix"></div>
@@ -64,8 +79,8 @@
                          <p>{!!$job->en_descrip!!} 
 </p>
                          <hr>
-                         <h3>Contacts</h3>
-                         <h4>Tel. : {!!$job->phone!!}</h4>
+                         <h3>Other Contacts</h3>
+                         <h4>Mobile : {!!$job->mobile!!}</h4>
                          <h4>E-mail : {!!$job->email!!}</h4>
                         </div>
                     </li>
@@ -104,7 +119,8 @@
                         @endif
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
                         <div class="col-lg-2 col-md-2">
-                        <img class='zoom_01' src='{!! asset("$re_job->image") !!}' data-zoom-image='{!! asset("$re_job->image") !!}' alt="{!!$re_job->ar_title!!}"> </div>
+                        <a href='{!! URL::to("jobs/$re_job->id") !!}'>
+                        <img class='zoom_01' src='{!! asset("$re_job->image") !!}' data-zoom-image='{!! asset("$re_job->image") !!}' alt="{!!$re_job->ar_title!!}"> </a></div>
                         <div class="col-lg-8 col-md-8">
                             <a href='{!! URL::to("jobs/$re_job->id") !!}'>
                                 <h2>{!!$re_job->en_title!!}</h2>
@@ -122,6 +138,7 @@
                     </li>
                     @endforeach
                 </ul>
+                {!!$relate_jobs->links()!!}
                 @endif
             </div>
         </div>

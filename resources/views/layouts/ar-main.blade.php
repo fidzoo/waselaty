@@ -196,18 +196,29 @@ function googleTranslateElementInit() {
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <!--End of Google translation scripts-->
+
 <script src='{!! asset("assets/js/jquery.elevatezoom.js") !!}'></script>
 <script>
     $('.zoom_01, #zoom_01').elevateZoom({
-cursor: "crosshair",
+//cursor: "crosshair",
+zoomWindowHeight: 400, zoomWindowWidth:250,
 //scrollZoom : true,
 zoomWindowFadeIn: 500,
 zoomWindowFadeOut: 750,
-tint:true, tintColour:'#780d31', tintOpacity:0.5
+//tint:true, tintColour:'#780d31', tintOpacity:0.5
    }); 
 
-    
+
 </script>
+
+<style type="text/css">
+    
+    .zoomWindowContainer div
+    {
+        background-position: center center !important;
+        background-size: 100% 100%!important;
+    }
+</style>
 </body>
 
 </html>

@@ -175,7 +175,9 @@ class JobController extends Controller
         $job->en_descrip= $request->input('en_descrip');
         $job->gender= $request->input('gender');
         $job->phone= $request->input('phone');
+        $job->mobile= $request->input('mobile');
         $job->email= $request->input('email');
+        $job->map= $request->input('map');
         $job->image= "assets/images/was_default_user.png";
         $job->user_id= auth()->user()->id;
         $job->country_id= $request->get('country');
@@ -199,7 +201,7 @@ class JobController extends Controller
 
             }
 
-                //it is delete old pic first the upload new one
+            //it is delete old pic first the upload new one
             if ($request->file('image')){
             if ($job->image != "assets/images/was_default_user.png"){
             File::delete($job->image);
@@ -208,6 +210,9 @@ class JobController extends Controller
             $destinationPath= 'images';
             $filename= rand().$file->getClientOriginalName();
             $file->move($destinationPath, $filename);
+        
+
+
         //add Watermark to the image
             $img_path= "images/".$filename;
             $watermark= imagecreatefrompng('assets/images/water-mark.png');
@@ -271,6 +276,7 @@ class JobController extends Controller
 
         $job= Job::findOrFail($id);
         $comments= $job->comments()->where('approve', 0)->get();
+        $job_owner= $job->user;
 
         //Throw 404 if job is not approved yet
         if($job->approved != 1){
@@ -286,7 +292,14 @@ class JobController extends Controller
           }
         $random= rand(0,count($categories)-1);
         $selected_cat= Category::where('id', $selected[$random])->firstOrfail();
-        $relate_jobs= $selected_cat->jobs()->where('user_id', $job->user_id)->where('approved', 1)->get();
+        
+        if ($job_owner->user_group == 'company') {
+            $relate_jobs= $selected_cat->jobs()->where('user_id', $job->user_id)->where('approved', 1)->paginate(15);
+        }
+        else{
+            $relate_jobs= $selected_cat->jobs()->where('country_id', $job->country_id)->where('approved', 1)->paginate(15);
+        }
+        
 
         //Banners:
         $banner_up= Banner::where('category_id', $selected_cat->id)->where('ar_position', 'داخلي - أعلى')->first();
@@ -306,7 +319,7 @@ class JobController extends Controller
                     $gender= 'Both';
                     break;
                     }
-            return view('en.job.job-details', compact('job', 'comments', 'gender', 'relate_jobs', 'mcat_en', 'cat_en', 'country_en', 'banner_up', 'banner_mid', 'banner_down'));
+            return view('en.job.job-details', compact('job', 'comments', 'job_owner', 'gender', 'relate_jobs', 'mcat_en', 'cat_en', 'country_en', 'banner_up', 'banner_mid', 'banner_down'));
         }
             switch ($job->gender) {
                 case '0':
@@ -319,7 +332,7 @@ class JobController extends Controller
                     $gender= 'الكل';
                     break;
                     }
-        return view('job.job-details', compact('job', 'comments', 'gender', 'relate_jobs', 'mcat_ar', 'cat_ar', 'country_ar', 'banner_up', 'banner_mid', 'banner_down'));
+        return view('job.job-details', compact('job', 'comments', 'job_owner', 'gender', 'relate_jobs', 'mcat_ar', 'cat_ar', 'country_ar', 'banner_up', 'banner_mid', 'banner_down'));
     }
 
     /**
@@ -390,7 +403,9 @@ class JobController extends Controller
             $job->en_descrip= $request->input('en_descrip');
             $job->gender= $request->input('gender');
             $job->phone= $request->input('phone');
+            $job->mobile= $request->input('mobile');
             $job->email= $request->input('email');
+            $job->map= $request->input('map');
             $job->country_id= $request->get('country');
             
             $job->salary= $request->input('salary');
@@ -419,42 +434,76 @@ class JobController extends Controller
             if ($job->image != "assets/images/was_default_user.png"){
             File::delete($job->image);
                 }
-            $file= $request->file('image');
-            $destinationPath= 'images';
-            $filename= rand().$file->getClientOriginalName();
-            $file->move($destinationPath, $filename);
-        //add Watermark to the image
-            $img_path= "images/".$filename;
-            $watermark= imagecreatefrompng('assets/images/water-mark.png');
-            $watermark_width = imagesx($watermark);  
-            $watermark_height = imagesy($watermark);
-            $image = imagecreatetruecolor($watermark_width, $watermark_height); 
+            // $file= $request->file('image');
+            
+            // $filename= rand().$file->getClientOriginalName();
+            // $file->move($destinationPath, $filename);
+            $max_size = 800;
 
-            switch(pathinfo($img_path, PATHINFO_EXTENSION)){ //determine uploaded image type 
+            $destination_folder = 'images';
+            $image_name = $_FILES['image']['name']; //file name
+            $image_size = $_FILES['image']['size']; //file size
+            $image_temp = $_FILES['image']['tmp_name']; //file temp
+            $image_type = $_FILES['image']['type']; //file type
+            
+            switch(strtolower($image_type)){ //determine uploaded image type 
             //Create new image from file
-            case 'png': 
-                $image =  imagecreatefrompng($img_path);
+            case 'image/png': 
+                $image_resource =  imagecreatefrompng($image_temp);
                 break;
-            case 'gif':
-                $image =  imagecreatefromgif($img_path);
+            case 'image/gif':
+                $image_resource =  imagecreatefromgif($image_temp);
                 break;          
-            case 'jpeg': case 'pjpeg': case 'jpg':
-                $image = imagecreatefromjpeg($img_path);
+            case 'image/jpeg': case 'image/pjpeg': case 'jpg':
+                $image_resource = imagecreatefromjpeg($image_temp);
                 break;
             default:
-                return 'Image Format is not valid, kindly press back and upload a valid image format (.png / .gif / .jpeg / .jpg)';
-        } 
-            
-            $size = getimagesize($img_path);  
-            $dest_x = $size[0] - $watermark_width - 5;  
-            $dest_y = $size[1] - $watermark_height - 5;  
-            imagecopy($image, $watermark, $dest_x, $dest_y, 0, 0, $watermark_width, $watermark_height); 
-            imagejpeg($image, $destinationPath.'/'.$filename , 90);
-            imagedestroy($image);  
-            imagedestroy($watermark);
-            //save image path to the job
-            $job->image= "images/".$filename;
+                $image_resource = false;
             }
+        if($image_resource){
+        //Copy and resize part of an image with resampling
+        list($img_width, $img_height) = getimagesize($image_temp);
+        
+        //Construct a proportional size of new image
+        $image_scale        = min($max_size / $img_width, $max_size / $img_height); 
+        $new_image_width    = 250;
+        $new_image_height   = 400;
+        $new_canvas         = imagecreatetruecolor($new_image_width , $new_image_height);
+
+        //Resize image with new height and width
+        if(imagecopyresampled($new_canvas, $image_resource , 0, 0, 0, 0, $new_image_width, $new_image_height, $img_width, $img_height))
+        {
+            //dd($new_canvas);
+            
+            if(!is_dir($destination_folder)){ 
+                mkdir($destination_folder);//create dir if it doesn't exist
+            }
+            
+            //get Watermark
+            $watermark= imagecreatefrompng('assets/images/water-mark.png'); //watermark image
+            $watermark_width = imagesx($watermark);  
+            $watermark_height = imagesy($watermark);
+
+            //calculate center position of watermark image
+            $watermark_left = ($new_image_width/2)-($watermark_width/2); //watermark left
+            $watermark_bottom = ($new_image_height/2)-($watermark_height/2); //watermark bottom
+
+            //use PHP imagecopy() to merge two images.
+            imagecopy($new_canvas, $watermark, $watermark_left, $watermark_bottom, 0, 0, $watermark_width, $watermark_height); //merge image
+            
+            //Or Save image to the folder
+            imagejpeg($new_canvas, $destination_folder.'/'.$image_name , 90);
+            
+            //save image path to the job
+            $job->image= "images/".$image_name;
+            //free up memory
+            imagedestroy($new_canvas); 
+            imagedestroy($image_resource);
+            
+        }
+    }
+        
+             }
 
         if(Session::get('group') == 'admin'){
             $approve= $request->input('review');

@@ -63,7 +63,8 @@
                 @foreach($rank_search as $r_job)
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
                         <div class="col-lg-2 col-md-2">
-                        <img class='zoom_01' src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
+                        <a href='{!! URL::to("jobs/$r_job->id") !!}'>
+                        <img class='zoom_01' src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}"></a>
                             <div class="paid-strip">إعلان مميز</div>
                         </div>
                         <div class="col-lg-8 col-md-8">
@@ -85,7 +86,8 @@
                 @foreach($search as $job)
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
                         <div class="col-lg-2 col-md-2">
-                        <img class='zoom_01' src='{!! asset("$job->image") !!}' data-zoom-image='{!! asset("$job->image") !!}' alt="{!!$job->ar_title!!}">
+                        <a href='{!! URL::to("jobs/$job->id") !!}'>
+                        <img class='zoom_01' src='{!! asset("$job->image") !!}' data-zoom-image='{!! asset("$job->image") !!}' alt="{!!$job->ar_title!!}"></a>
                         </div>
                         <div class="col-lg-8 col-md-8">
                             <a href='{!! URL::to("jobs/$job->id") !!}'>

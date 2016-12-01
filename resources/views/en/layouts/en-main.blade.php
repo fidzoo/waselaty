@@ -196,6 +196,7 @@ function googleTranslateElementInit() {
 <script>
     $('.zoom_01, #zoom_01').elevateZoom({
 cursor: "crosshair",
+scrollZoom : true,
 zoomWindowFadeIn: 500,
 zoomWindowFadeOut: 750,
 tint:true, tintColour:'#780d31', tintOpacity:0.5

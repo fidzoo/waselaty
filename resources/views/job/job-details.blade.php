@@ -2,6 +2,15 @@
 
 @section('content')
 
+<style type="text/css">
+    
+    li.mapp iframe
+    {
+        width: 516px !important;
+        height: 300px !important;
+    }
+</style>
+
     <div class="main-container">
         <div class="clearfix"></div>
         <div class="container">
@@ -46,8 +55,6 @@
                         <div class="col-lg-4 col-md-4" id="job-image">
                         <img id="zoom_01"  src='{!! asset("$job->image") !!}' data-zoom-image='{!! asset("$job->image") !!}' alt="job-image"> </div>
 
-   
-
                         <div class="col-lg-8 last col-md-8">
                             <ul class="details">
                                 <li>تاريخ الإضافة: {!!$job->created_at!!}</li>
@@ -58,6 +65,11 @@
                                 <li>نوع الوظيفة : {!!$job->categories[0]->ar_title!!}</li>
                                 <li>سنوات الخبرة : {!!$job->experience!!}</li>
                                 <li>الجنس : {!!$gender!!}</li>
+                                @if($job_owner->user_group == 'company')
+                                <li>الشركة : {!!$job_owner->company->ar_company!!}</li>
+                                @endif
+                                <li>الهاتف : {!!$job->phone!!}</li>
+                                <li class="mapp">تجدنا هنا : {!!$job->map!!}</li>
                             </ul>
                         </div>
                         <div class="clearfix"></div>
@@ -67,8 +79,8 @@
                          <p>{!!$job->ar_descrip!!} 
 </p>
                          <hr>
-                         <h3>طرق التواصل</h3>
-                         <h4>الهاتف : {!!$job->phone!!}</h4>
+                         <h3>طرق تواصل أخرى</h3>
+                         <h4>الجوال : {!!$job->mobile!!}</h4>
                          <h4>البريد الإلكتروني : {!!$job->email!!}</h4>
                         </div>
                     </li>
@@ -107,7 +119,8 @@
                         @endif
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
                         <div class="col-lg-2 col-md-2">
-                        <img class='zoom_01' src='{!! asset("$re_job->image") !!}' data-zoom-image='{!! asset("$re_job->image") !!}' alt="{!!$re_job->ar_title!!}"> </div>
+                        <a href='{!! URL::to("jobs/$re_job->id") !!}'>
+                        <img class='zoom_01' src='{!! asset("$re_job->image") !!}' data-zoom-image='{!! asset("$re_job->image") !!}' alt="{!!$re_job->ar_title!!}"></a> </div>
                         <div class="col-lg-8 col-md-8">
                             <a href='{!! URL::to("jobs/$re_job->id") !!}'>
                                 <h2>{!!$re_job->ar_title!!}</h2>
@@ -125,6 +138,7 @@
                     </li>
                     @endforeach
                 </ul>
+                {!!$relate_jobs->links()!!}
                 @endif
             </div>
         </div>

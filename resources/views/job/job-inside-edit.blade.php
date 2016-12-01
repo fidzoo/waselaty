@@ -80,8 +80,12 @@
 <h4><b>بيانات الإتصال</b></h4>
 {!! Form::label('الهاتف') !!}<br>
 {!! Form::text('phone', $job->phone, ['class'=>'form-control']) !!}<br>
+{!! Form::label('الجوال') !!}<br>
+{!! Form::text('mobile', $job->mobile, ['class'=>'form-control']) !!}<br>
 {!! Form::label('البريد الإلكتروني') !!}<br>
 {!! Form::text('email', $job->email, ['class'=>'form-control']) !!}<br>
+{!! Form::label('موقع الخريطة') !!}<br>
+{!! Form::text('map', $job->map, ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('تحديث الصورة') !!}<br>
 {!! Form::file('image') !!}<br>
