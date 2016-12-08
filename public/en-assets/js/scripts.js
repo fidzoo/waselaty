@@ -7,7 +7,7 @@
         else {
             counter++; // Else, add 1 to the counter
         }
-    }, 5000);
+    }, 6000);
 
     $(function () {
         $(".show-menu").click(function () {

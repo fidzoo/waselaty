@@ -44,6 +44,8 @@
 {!! Form::text('phone', $job->phone, ['class'=>'form-control']) !!}<br>
 {!! Form::label('البريد الإلكتروني') !!}<br>
 {!! Form::text('email', $job->email, ['class'=>'form-control']) !!}<br>
+{!! Form::label('موقع الخريطة') !!}<br>
+{!! Form::text('map', $job->map, ['class'=>'form-control']) !!}<br>
 
 {!! Form::label('صورة للوظيفة') !!}<br>
 {!! HTML::image($job->image, '',["width"=>"400"]) !!}<br><br>

@@ -378,7 +378,7 @@ if ( typeof Object.create !== 'function' ) {
 				}
 
 				self.zoomContainer.bind('mouseenter', function(e){ 
-					$('.zoomWindowContainer div').append("<p id='text'>test</p>");
+					$('.zoomWindowContainer div').append("<p id='text'>ssssss</p>");
 				}); 
 
 				self.zoomContainer.bind('mouseleave', function(e){ 

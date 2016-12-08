@@ -209,7 +209,7 @@ header .search-header {
 /* line 232, D:/JobsHTML/css/style.scss */
 section#slider {
   position: relative;
-  background-image: url(../images/main-slider.jpg);
+  /**background-image: url(../images/main-slider.jpg);**/
   background-color: white;
   background-size: contain;
   overflow: hidden;
@@ -220,16 +220,29 @@ section#slider {
 
 /* line 244, D:/JobsHTML/css/style.scss */
 section#slider.class1 {
-  background-image: url(../../images/main-slider2.jpg); }
+    -webkit-transition: 1.8s ease-in-out;
+    -moz-transition: 1.8s ease-in-out;
+    -o-transition: 1.8s ease-in-out;
+    transition: 1.8s ease-in-out;
+
+   }
 
 /* line 248, D:/JobsHTML/css/style.scss */
 section#slider.class2 {
-  background-image: url(../../images/main-slider.jpg); }
+    -webkit-transition: 1.8s ease-in-out;
+    -moz-transition: 1.8s ease-in-out;
+    -o-transition: 1.8s ease-in-out;
+    transition: 1.8s ease-in-out;
+ }
 
 /* line 252, D:/JobsHTML/css/style.scss */
 section#slider.class3 {
-  background-image: url(../../images/main-slider2.jpg); }
+    -webkit-transition: 1.8s ease-in-out;
+    -moz-transition: 1.8s ease-in-out;
+    -o-transition: 1.8s ease-in-out;
+    transition: 1.8s ease-in-out;   ;
 
+ }
 /**
 .swiper-container {
     min-width: 100%;

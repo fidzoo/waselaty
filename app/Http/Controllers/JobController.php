@@ -171,6 +171,8 @@ class JobController extends Controller
         $job= new Job;
         $job->ar_title= $request->input('ar_title');
         $job->en_title= $request->input('en_title');
+        $job->ar_name= $request->input('ar_name');
+        $job->en_name= $request->input('en_name');
         $job->ar_descrip= $request->input('ar_descrip');
         $job->en_descrip= $request->input('en_descrip');
         $job->gender= $request->input('gender');
@@ -399,6 +401,8 @@ class JobController extends Controller
             $job= Job::find($id);
             $job->ar_title= $request->input('ar_title');
             $job->en_title= $request->input('en_title');
+            $job->ar_name= $request->input('ar_name');
+            $job->en_name= $request->input('en_name');
             $job->ar_descrip= $request->input('ar_descrip');
             $job->en_descrip= $request->input('en_descrip');
             $job->gender= $request->input('gender');
@@ -481,6 +485,7 @@ class JobController extends Controller
             
             //get Watermark
             $watermark= imagecreatefrompng('assets/images/water-mark.png'); //watermark image
+            
             $watermark_width = imagesx($watermark);  
             $watermark_height = imagesy($watermark);
 

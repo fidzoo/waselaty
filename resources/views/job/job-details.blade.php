@@ -63,7 +63,7 @@
                             </ul>
                             <ul class="details">
                                 <li>نوع الوظيفة : {!!$job->categories[0]->ar_title!!}</li>
-                                <li>سنوات الخبرة : {!!$job->experience!!}</li>
+                                <li>سنوات الخبرة : @if ($job->experience == 6) أكثر من @endif {!!$job->experience!!}</li>
                                 <li>الجنس : {!!$gender!!}</li>
                                 @if($job_owner->user_group == 'company')
                                 <li>الشركة : {!!$job_owner->company->ar_company!!}</li>

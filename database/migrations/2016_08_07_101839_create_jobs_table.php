@@ -24,6 +24,8 @@ class CreateJobsTable extends Migration
             $table->integer('price_id');
             $table->string('ar_title');
             $table->string('en_title');
+            $table->string('ar_name')->length(15);
+            $table->string('en_name')->length(15);
             $table->text('ar_descrip');
             $table->text('en_descrip');
             $table->integer('gender');//0:Male, 1:female, 2:both

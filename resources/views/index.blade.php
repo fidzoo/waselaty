@@ -15,6 +15,8 @@
         <div style="display:none" class="swiper-button-next"></div>
     </div>
     -->
+
+
             <div class="slider-content">
                 <div class="container">
                     <h1 class="wow fadeInDown" data-wow-delay=".2s" data-wow-duration="2s">أول موقع لتقديم الخدمات في قطر</h1>
@@ -80,7 +82,10 @@
 
 
 <style type="text/css">
-        section#slider.class1 {
+section#slider {
+  background-image: url({!! $silder_img3->ar_content !!}); }
+  
+section#slider.class1 {
   background-image: url({!! $silder_img1->ar_content !!}); }
 
 section#slider.class2 {

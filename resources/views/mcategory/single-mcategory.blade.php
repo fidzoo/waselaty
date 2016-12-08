@@ -55,20 +55,54 @@
                 <div class="clearfix"></div>
                 <ul class="jobs">
                 <!--ranked companies-->
+                                <style type="text/css">
+                                    .free p
+                                    {
+                                        position: absolute;
+                                        z-index: 999999;
+                                        bottom: 0;
+                                        display: block;
+                                        font-size: 20px;
+                                        width: 100%;
+                                    }
+                                </style>
                 @foreach($rank_jobs as $r_job)
                  <script type="text/javascript">
                     
-                    $(function(){
+                    // $(function(){
 
-                            $("#text").html("<span>lol</span>");
+                            
 
-                    });
-                </script>
+                    //         $(".content ul.jobs li .col-lg-2 img").hover(function(){
+                    //             $(".free").css("display", "block");
+                    //         });
+
+                    //          $(".content ul.jobs li .col-lg-2 img").mouseleave(function(){
+                    //             $(".free").css("display", "none");
+                    //         });
+
+                    // });
+                </script> 
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
                         <div class="col-lg-2 col-md-2">
                         <a href='{!! URL::to("jobs/$r_job->id") !!}'>
 
-                        <img class="zoom_01" src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}"></a>
+                        <img  src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
+                        </a>
+                        <div class="free">
+                            <a href='{!! URL::to("jobs/$r_job->id") !!}'>
+                                <img  src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
+                                <p>
+                                    <span>{!!$r_job->ar_name!!}</span>
+                                    <span>{!!$r_job->ar_title!!}</span>
+                                    <span>سنوات الخبرة: @if ($r_job->experience == 6) More than @endif {!!$r_job->experience!!}</span>
+                                    @if($r_job->user->user_group == 'company')
+                                    <span>{!!$r_job->user->company->ar_company!!}</span>
+                                    @endif
+                                </p>
+
+                            </a>
+                        </div>
                             <div class="paid-strip">إعلان مميز</div>
                         </div>
                         <div class="col-lg-8 col-md-8">
@@ -93,9 +127,15 @@
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
                         <div class="col-lg-2 col-md-2">
                         <a href='{!! URL::to("jobs/$job->id") !!}'>
-                        <img class="zoom_01" src='{!! asset("$job->image") !!}'' data-zoom-image='{!! asset("$job->image") !!}'  alt="{!!$job->ar_title!!}">
+                        <img  src='{!! asset("$job->image") !!}'' data-zoom-image='{!! asset("$job->image") !!}'  alt="{!!$job->ar_title!!}">
 
                         </a>
+                        <div class="free">
+                            <a href='{!! URL::to("jobs/$job->id") !!}'>
+                        <img  src='{!! asset("$job->image") !!}'' data-zoom-image='{!! asset("$job->image") !!}'  alt="{!!$job->ar_title!!}">
+
+                        </a>
+                        </div>
                         </div>
                         <div class="col-lg-8 col-md-8">
                             <a href='{!! URL::to("jobs/$job->id") !!}'>

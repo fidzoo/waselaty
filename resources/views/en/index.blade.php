@@ -80,6 +80,9 @@
 
 
 <style type="text/css">
+section#slider {
+  background-image: url({!! $silder_img3->ar_content !!}); }
+  
         section#slider.class1 {
   background-image: url({!! $silder_img1->ar_content !!}); }
 

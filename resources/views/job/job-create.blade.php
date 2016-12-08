@@ -55,6 +55,10 @@
 {!! Form::text('ar_title', "", ['class'=>'form-control']) !!}<br>
 {!! Form::label('Add Title') !!}<br>
 {!! Form::text('en_title', "", ['class'=>'form-control']) !!}<br>
+{!! Form::label('اسم الشخص بالعربية- لا يزيد عن 15 حرف') !!}<br>
+{!! Form::text('ar_name', "", ['maxlength'=>'15', 'class'=>'form-control']) !!}<br>
+{!! Form::label('اسم الشخص بالإنجليزية- لا يزيد عن 15 حرف') !!}<br>
+{!! Form::text('en_name', "", ['maxlength'=>'15', 'class'=>'form-control']) !!}<br>
 {!! Form::label('محتوى الإعلان') !!}<br>
 {!! Form::textarea('ar_descrip', "", ['class'=>'form-control']) !!}<br>
 {!! Form::label('Add Content') !!}<br>

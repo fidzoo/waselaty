@@ -63,7 +63,7 @@
                             </ul>
                             <ul class="details">
                                 <li>Job Title : {!!$job->categories[0]->en_title!!}</li>
-                                <li>Experience years : {!!$job->experience!!}</li>
+                                <li>Experience years : @if ($job->experience == 6) More than @endif {!!$job->experience!!}</li>
                                 <li>Gender : {!!$gender!!}</li>
                                 @if($job_owner->user_group == 'company')
                                 <li>Company : {!!$job_owner->company->en_company!!}</li>
