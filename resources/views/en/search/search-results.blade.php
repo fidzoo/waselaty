@@ -58,11 +58,47 @@
                 @if(count($rank_search) == 0 && count($search) == 0)
                 <h2>Sorry, There Is No Results!</h2>
                 @endif
-
+                                <style type="text/css">
+                                    .free p
+                                    {
+                                        position: absolute;
+                                        z-index: 999999;
+                                        bottom: 0;
+                                        display: block;
+                                        font-size: 20px;
+                                        width: 48%;
+                                        margin: 0px auto;
+                                        right: 0;
+                                    }
+                                    .free p span {
+                                        display: block;
+                                        font-size: 9px;
+                                        margin: 0;
+                                        text-align: left;
+                                        padding-right: 10px;
+                                        font-weight: bold;
+                                    }
+                                </style>
                 <ul class="jobs">
                 @foreach($rank_search as $r_job)
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
-                        <div class="col-lg-2 col-md-2"><img class='zoom_01' src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
+                        <div class="col-lg-2 col-md-2"><img  src='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
+                        <div class="free hidden-sm  hidden-xs">
+                            <a href='{!! URL::to("jobs/$r_job->id") !!}'>
+                                <img  src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
+                                <p>
+                                    <span>{!!$r_job->en_name!!}</span>
+                                    <span>{!!$r_job->en_title!!}</span>
+                                    <span>Experince: @if ($r_job->experience == 6) +  @endif {!!$r_job->experience!!}</span>
+                                    @if($r_job->user->user_group == 'company')
+                                    <span>{!!$r_job->user->company->en_company!!}</span>
+                                    @else
+                                    <span>Add. Owner: {!!$r_job->user->name!!}</span>
+                                    @endif
+                                </p>
+
+                            </a>
+                        </div>
                             <div class="paid-strip">Premium</div>
                         </div>
                         <div class="col-lg-8 col-md-8">
@@ -83,7 +119,25 @@
                 @endforeach
                 @foreach($search as $job)
                     <li class="wow fadeIn" data-wow-delay=".2s" data-wow-duration="1s">
-                        <div class="col-lg-2 col-md-2"><img class='zoom_01' src='{!! asset("$job->image") !!}' data-zoom-image='{!! asset("$job->image") !!}' alt="{!!$job->ar_title!!}">
+                        <div class="col-lg-2 col-md-2"><img src='{!! asset("$job->image") !!}' alt="{!!$job->ar_title!!}">
+
+                        <div class="free hidden-sm  hidden-xs">
+                            <a href='{!! URL::to("jobs/$job->id") !!}'>
+                                <img  src='{!! asset("$job->image") !!}' data-zoom-image='{!! asset("$job->image") !!}' alt="{!!$job->ar_title!!}">
+                                <p>
+                                    <span>{!!$job->en_name!!}</span>
+                                    <span>{!!$job->en_title!!}</span>
+                                    <span>Experince: @if ($job->experience == 6) + @endif {!!$job->experience!!}</span>
+                                    @if($job->user->user_group == 'company')
+                                    <span>{!!$job->user->company->en_company!!}</span>
+                                    @else
+                                    <span>Add. Owner: {!!$job->user->name!!}</span>
+                                    @endif
+                                </p>
+
+                            </a>
+                        </div>
+
                         </div>
                         <div class="col-lg-8 col-md-8">
                             <a href='{!! URL::to("jobs/$job->id") !!}'>

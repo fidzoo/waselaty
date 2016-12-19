@@ -64,6 +64,15 @@
                                         display: block;
                                         font-size: 20px;
                                         width: 100%;
+                                        margin: 0px auto;
+                                    }
+                                    .free p span {
+                                        display: block;
+                                        font-size: 11px;
+                                        margin: 0;
+                                        text-align: right;
+                                        padding-right: 10px;
+                                        font-weight: bold;
                                     }
                                 </style>
                 @foreach($rank_jobs as $r_job)
@@ -89,15 +98,17 @@
 
                         <img  src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
                         </a>
-                        <div class="free">
+                        <div class="free hidden-sm  hidden-xs">
                             <a href='{!! URL::to("jobs/$r_job->id") !!}'>
                                 <img  src='{!! asset("$r_job->image") !!}' data-zoom-image='{!! asset("$r_job->image") !!}' alt="{!!$r_job->ar_title!!}">
                                 <p>
                                     <span>{!!$r_job->ar_name!!}</span>
                                     <span>{!!$r_job->ar_title!!}</span>
-                                    <span>سنوات الخبرة: @if ($r_job->experience == 6) More than @endif {!!$r_job->experience!!}</span>
+                                    <span>سنوات الخبرة: @if ($r_job->experience == 6) أكثر من  @endif {!!$r_job->experience!!}</span>
                                     @if($r_job->user->user_group == 'company')
                                     <span>{!!$r_job->user->company->ar_company!!}</span>
+                                    @else
+                                    <span>صاحب الإعلان: {!!$r_job->user->name!!}</span>
                                     @endif
                                 </p>
 
@@ -130,11 +141,19 @@
                         <img  src='{!! asset("$job->image") !!}'' data-zoom-image='{!! asset("$job->image") !!}'  alt="{!!$job->ar_title!!}">
 
                         </a>
-                        <div class="free">
+                        <div class="free hidden-sm  hidden-xs">
                             <a href='{!! URL::to("jobs/$job->id") !!}'>
                         <img  src='{!! asset("$job->image") !!}'' data-zoom-image='{!! asset("$job->image") !!}'  alt="{!!$job->ar_title!!}">
 
                         </a>
+                         <p>
+                                    <span>{!!$job->ar_name!!}</span>
+                                    <span>{!!$job->ar_title!!}</span>
+                                    <span>سنوات الخبرة: @if ($job->experience == 6) أكثر من @endif {!!$job->experience!!}</span>
+                                    @if($job->user->user_group == 'company')
+                                    <span>{!!$job->user->company->ar_company!!}</span>
+                                    @endif
+                                </p>
                         </div>
                         </div>
                         <div class="col-lg-8 col-md-8">

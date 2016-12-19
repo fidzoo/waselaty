@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة تحكم توظيف</title>
+    <!-- Bootstrap Styles-->
+    <?php echo HTML::style('assets/css/bootstrap.css'); ?>
+
+    <!-- FontAwesome Styles-->
+    <?php echo HTML::style('assets/css/font-awesome.css'); ?>
+
+    <!-- Morris Chart Styles-->
+    <?php echo HTML::style('assets/js/morris/morris-0.4.3.min.css'); ?>
+
+    <!-- Custom Styles-->
+    <?php echo HTML::style('assets/css/custom-styles-ar.css'); ?>
+
+    <!-- Google Fonts-->
+
+    <!-- Date and time pickers
+    <?php echo HTML::style('assets/css/timepicker.less'); ?>
+
+    <?php echo HTML::style('assets/css/bootstrap-datepicker3.min.css'); ?>
+
+    -->
+    <?php echo HTML::style('http://fonts.googleapis.com/css?family=Open+Sans'); ?>
+
+    <?php echo HTML::script('https://use.fontawesome.com/98bba3ab93.js'); ?>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="<?php echo e(url('dash')); ?>">YISWEB Admin</a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-left">
+                
+                <li class="dropdown">
+                    <a href="<?php echo e(url('/logout')); ?>">
+                        <i class="fa fa-sign-out fa-fw"></i>
+                    </a>
+                </li>
+
+                
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="active-menu" href="<?php echo e(URL::to('dash')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> لوحة التحكم</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cube" aria-hidden="true"></i> اعلانات الوظائف<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                             <a href="<?php echo e(URL::to('company-status')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> إعلانات الشركات </a>  
+                            </li>
+                            <li>
+                              <a href="<?php echo e(URL::to('person-status')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> إعلانات الأفراد</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cube" aria-hidden="true"></i> تصنيف الوظائف<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                             <a href="<?php echo e(URL::to('categories/create')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> إضافة تصنيف </a>  
+                            </li>
+                            <li>
+                              <a href="<?php echo e(URL::to('category-edit')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> حذف تصنيف</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                    <li>
+                        <a href="#"><i class="fa fa-cube" aria-hidden="true"></i> البلاد<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                             <a href="<?php echo e(URL::to('countries/create')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> إضافة بلد </a>  
+                            </li>
+                            <li>
+                              <a href="<?php echo e(URL::to('country-edit')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> حذف بلد</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="<?php echo e(URL::to('banners')); ?>"><i class="fa fa-cube" aria-hidden="true"></i> البنرات الإعلانية</a>
+                    </li>                    
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            لوحة التحكم 
+                        </h1>
+                        
+                        <?php if(Session::has('message')): ?>
+                        <div id="message" class='alert alert-success'>
+                            <p><h1> <?php echo Session::get('message'); ?> </h1></p> 
+                         </div>
+                         <?php endif; ?>
+                        <?php echo $__env->yieldContent('content'); ?>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+
+				<footer><p>-----------------------------<br>
+                كل الحقوق محفوظة. لوحة التحكم تطوير: <a href="http://yisweb.com">YISWEB</a></p></footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+
+ 
+    <?php echo HTML::script('assets/js/jquery-1.10.2.js'); ?>
+
+
+    <!-- Bootstrap Js -->   
+<!--
+<script>
+    $(function(){
+  
+        $('#sandbox-container input').datepicker({
+           
+        });
+
+        $('#timepicker1').timepicker(); 
+    });
+</script>
+-->
+    <?php echo HTML::script('assets/js/bootstrap.min.js'); ?>
+
+
+    <!-- Metis Menu Js -->
+    <?php echo HTML::script('assets/js/jquery.metisMenu.js'); ?>
+
+    <!-- Morris Chart Js -->
+    <?php echo HTML::script('assets/js/morris/raphael-2.1.0.min.js'); ?>
+
+
+    <?php echo HTML::script('assets/js/morris/morris.js'); ?>
+
+    <!--
+    <?php echo HTML::script('assets/js/bootstrap-datepicker.min.js'); ?>
+
+    <?php echo HTML::script('assets/js/bootstrap-timepicker.js'); ?>
+
+    -->
+    <!-- Custom Js -->
+    <?php echo HTML::script('assets/js/custom-scripts.js'); ?>
+
+
+   
+
+
+
+
+</body>
+
+
+
+</html>

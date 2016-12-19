@@ -19,6 +19,10 @@
 {!! Form::text('ar_title', $job->ar_title, ['class'=>'form-control']) !!}<br>
 {!! Form::label('English Job Title') !!}<br>
 {!! Form::text('en_title', $job->en_title, ['class'=>'form-control']) !!}<br>
+{!! Form::label('Person Name in Arabic- Not more than 15 charachter') !!}<br>
+{!! Form::text('ar_name', $job->ar_name, ['maxlength'=>'15', 'class'=>'form-control']) !!}<br>
+{!! Form::label('Person Name in English- Not more than 15 charachter') !!}<br>
+{!! Form::text('en_name', $job->en_name, ['maxlength'=>'15', 'class'=>'form-control']) !!}<br>
 {!! Form::label('Arabic Content') !!}<br>
 {!! Form::textarea('ar_descrip', $job->ar_descrip, ['class'=>'form-control']) !!}<br>
 {!! Form::label('English Content') !!}<br>

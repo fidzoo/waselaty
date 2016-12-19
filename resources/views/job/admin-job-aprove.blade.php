@@ -19,6 +19,10 @@
 {!! Form::text('ar_title', $job->ar_title, ['class'=>'form-control']) !!}<br>
 {!! Form::label('Job Title') !!}<br>
 {!! Form::text('en_title', $job->en_title, ['class'=>'form-control']) !!}<br>
+{!! Form::label('اسم الشخص بالعربية- لا يزيد عن 15 حرف') !!}<br>
+{!! Form::text('ar_name', $job->ar_name, ['maxlength'=>'15', 'class'=>'form-control']) !!}<br>
+{!! Form::label('اسم الشخص بالإنجليزية- لا يزيد عن 15 حرف') !!}<br>
+{!! Form::text('en_name', $job->en_name, ['maxlength'=>'15', 'class'=>'form-control']) !!}<br>
 {!! Form::label('وصف الوظيفة') !!}<br>
 {!! Form::textarea('ar_descrip', $job->ar_descrip, ['class'=>'form-control']) !!}<br>
 {!! Form::label('Job description') !!}<br>
